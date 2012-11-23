@@ -1,0 +1,101 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage[toc,page]{appendix}
+%fonts pour les math
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{dsfont}
+\usepackage{stmaryrd}
+%couleur dans le doc
+\usepackage[dvipsnames]{xcolor}
+\usepackage{ulem}
+%\usepackage{lastpage}
+%pour les images
+	%\usepackage[dvips, pdftex]{graphicx}
+	%\usepackage[section]{placeins}
+	%\usepackage{here}
+	%\usepackage{float}
+
+%définition du titre du document
+\newcommand{\titleinfo}{\textcolor{MidnightBlue}{MEC431 – Projet}}
+ %\newcommand{\sectionprefix}{Q}
+
+\usepackage{tikz}
+\usepackage{url}
+\usepackage{hyperref}
+%\usepackage{pst-plot}
+%\usepackage{pst-grad}
+%\usepackage{pst-node}
+\usepackage{booktabs}
+%formattage de la page
+	\usepackage{geometry}
+	\geometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
+	%fomattage de l'entête et du pied de page
+	\usepackage{fancyhdr}
+		\setlength{\headheight}{15.2pt}
+		\lhead{\titleinfo}
+		\rhead{\leftmark}
+	\pagestyle{fancy}
+
+
+%formattage du titre des sections
+	%\usepackage{titlesec}
+	%\titleformat{\section}[runin]{\normalfont\bfseries}{\sectionprefix \thesection}{1pt}{}[.]
+
+%longueur des sauts de paragraphe
+\setlength{\parskip}{1ex}
+
+%commande pour les ensembles
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+
+%commande pour les notations de map
+	%\newcommand{\I}{\mathds{1}}
+	%\newcommand{\p}{\mathds{P}}
+	%\newcommand{\E}{\mathds{E}}
+	%\renewcommand{\P}{\mathds{P}}
+
+
+%commande pour les opérateurs
+\newcommand{\INT}{\displaystyle\int}
+\newcommand{\SUM}{\displaystyle\sum}
+\newcommand{\FRAC}{\displaystyle\frac}
+\newcommand{\PROD}{\displaystyle\prod}
+\newcommand{\INF}{\displaystyle\inf}
+
+\newcommand{\tens}{\uuline}
+\newcommand{\verseur}[1]{\uline{e_{#1}}}
+\newcommand{\diage}[1]{\uline{e_{#1}} \otimes \uline{e_{#1}}}
+\newcommand{\diveleme}[3]{\FRAC{\partial #1_{#2#3}}{\partial #3} e_{#2}}
+\newcommand{\dive}{\mathop{\rm div}}
+\newcommand{\grad}{\mathop{\rm grad}}
+\begin{document}
+
+\title{\titleinfo}
+\author{
+	François \bsc{Espinet}
+	\\
+	Thomas \bsc{Ferreira de lima}
+	\\
+	Sophie \bsc{Rousselle}
+	\\
+	Oscar \bsc{Flores Altamirano}
+}
+\date{}
+\maketitle
+
+%appendice éventuel
+%\clearpage
+%\rhead{Annexe}
+%\renewcommand{\appendixpagename}{\centering{Annexe : Liste des fonctions Scilab}}
+%\renewcommand{\labelitemi}{$\bullet$}
+%\renewcommand{\labelitemiii}{$\cdot$}
+%\renewcommand{\labelitemii}{$\diamond$}
+%\renewcommand{\labelitemiv}{$\ast$}
+%\begin{appendices}
+%\end{appendices}
+\end{document}
