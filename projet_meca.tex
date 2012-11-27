@@ -110,6 +110,10 @@ Comme $\delta \ll 1$ on peut prendre $\beta=\lambda$ et on trouve
 
 $$\underline{\underline{F}} = \frac{1}{\lambda\mu}\underline{e}_r\otimes\underline{e}_R+\lambda\underline{e}_\theta\otimes\underline{e}_\Theta+\mu\underline{e}_z\otimes\underline{e}_Z $$
 
+Ce qui donne :
+
+$$ \frac{e}{E} = \frac{1}{\lambda\mu} \Longrightarrow \frac{e}{a} = \frac{1}{\lambda\mu} \cdot \frac{E}{\lambda A} = \frac{ \epsilon}{\lambda^2 \mu}$$
+
 \subsection{}
 On fait le calcul directement: $$I_1=\text{tr}\left(\underline{\underline{B}}\right) = \text{tr}\left(\underline{\underline{F}}\cdot{}^{t}\underline{\underline{F}}\right) = \text{tr}\left(\frac{1}{\lambda^2\mu^2}\underline{e}_R\otimes\underline{e}_R + \lambda^2\underline{e}_\Theta\otimes\underline{e}_\Theta + \mu^2\underline{e}_Z\otimes\underline{e}_Z \right)=\left(\frac{1}{\lambda\mu}\right)^2+\lambda^2+\mu^2$$
 
@@ -148,6 +152,22 @@ $$\sigma_{\theta\theta} = \frac{a\Delta p}{e} - p_e \approx  \frac{a\Delta p}{e}
 Obs: Le fait que $\sigma_{rr}$ soit de l'ordre de $p_i$ ou $p_e$ et que l'on a trouvé $\sigma_{\theta\theta} \gg p_e$ confirme notre suposition d'auparavant $\sigma_{rr} \ll \sigma_{\theta\theta}$.
 
 Les conditions aux bords $z=0$ ($S_0$) et $z=H$ ($S_H$), avec l'hypothèse $\sigma_{zz} = \mathrm{cte}$, nous donnent directement la rélation $T \approx 2\pi a e \cdot \sigma_{zz}$. Avec la contrainte $\sigma_{\theta\theta} \approx \frac{a\Delta p}{e}$ le jeux de variables indéfinies du problème $(\mu, \lambda)$ diminue de dimension, si on n'impose pas une valeur à $T$. En reflechissant au cercle de Mohr et aux conditions limites de rupture, il est raisonable de dire que le système admettrait une solution qui minimise l'écart entre $\sigma_{\theta\theta}$ et $\sigma_{zz}$. Cela se passe quand $\mu \approx \lambda$, d'àpres les équations dans la question 1.6. Cela implique que l'effort d'équilibre vaudrait $T \approx \pi ae \cdot \frac{a\Delta p}{e} = \pi a^2 \Delta p$.
+
+On note $T = T_{\Delta p} + T_a = \pi a^2 \Delta p + T_a$ et on introduit les résultats trouvés ci-dessus dans le systeme d'équations de la question précedente.
+
+$$
+\begin{cases}
+2\rho_0 \left (\frac{\partial\psi}{\partial I_1} + \frac{\partial\psi}{\partial I_2} \mu^2 \right) \left ( \lambda^2 - \frac{1}{\lambda^2\mu^2} \right) = \frac{\lambda^2\mu \Delta p}{\epsilon} \\
+2\rho_0 \left (\frac{\partial\psi}{\partial I_1} + \frac{\partial\psi}{\partial I_2} \lambda^2 \right) \left ( \mu^2 - \frac{1}{\lambda^2\mu^2} \right) = \frac{T}{2\pi ae} = \frac{\lambda^2\mu T_a}{2\lambda^2\pi A^2 \epsilon } + \frac{\lambda^2\mu\Delta p}{2\epsilon}
+\end{cases}
+$$
+
+$$
+\begin{cases}
+\frac{2\rho_0}{\lambda^2\mu} \left (\frac{\partial\psi}{\partial I_1} + \frac{\partial\psi}{\partial I_2} \mu^2 \right) \left ( \lambda^2 - \frac{1}{\lambda^2\mu^2} \right) = \frac{\Delta p}{\epsilon} \\
+\frac{2\rho_0}{\lambda^2\mu^3} \left [\frac{\partial\psi}{\partial I_1} (2\mu^4\lambda^2-\mu^2\lambda^4-1) + \frac{\partial\psi}{\partial I_2} (\mu^4 \lambda^4 - 2\lambda^2 + \mu^2) \right] = \frac{T_a}{\pi A^2 \epsilon}
+\end{cases}
+$$
 
 \subsection{}
 \begin{enumerate}
