@@ -90,21 +90,96 @@
 
 \section{Calcul de structure}
 
-%question 1.4
+\subsection{Données du problème}
+
+\begin{itemize}
+\item géométrie initiale:
+Cylindre de section droite circulaire, de rayon intérieur A et d'épaisseur E, délimité par 2 plans perpendiculaires à l'axe
+\item cinématique imposée:
+Origine et directrice fixes, déplacement donné par les surfaces  S0,  SH, Sint, Sext
+\item efforts imposés:
+	\begin{itemize}
+	\item L'effort volumique est nul car on néglige le poids du système.
+	\item Sur la paroi interne $S_{int} (R=A)$:  $\uline{T_d} = -p_i \uline{n}$ et $\uline{n} =- \uline{e_r}$
+	\item Sur la paroi externe $S_{ext} (R=A+E)$:  $\uline {T_d} = -p_e \uline{n}$ et $\uline{n} = \uline{e_r}$
+	\item sur $S_H (Z=H)$ : $\uline{T_d} = \frac{T}{S_H}\uline{n}$ et $\uline{n} = \uline{e_z}$
+	\end{itemize}
+\item comportement: le matériau est élastomère isotrope avec liaison interne d'isochorie d'où sa loi de comportement est:
+\begin{center}
+$$\tens{\sigma}=2\rho_0\frac{\partial\psi}{\partial I_1}(I_1,I_2)\tens{B} -2\rho_0\frac{\partial\psi}{\partial I_2}(I_1,I_2) \tens{B}^{-1}+q\mathds{1}$$
+\end{center}
+où
+\begin{flushleft}
+$\rho_0$ est la masse volumique;
+$\psi$ est l'énergie libre massique fonction de la déformation de Green-Lagrange \tens{e} au travers de ses deux premiers invariants $I_1= tr(\tens{B})$ et $I_2=\frac{1}{2}({I_1}^2-\tens{C}:\tens{C})$ et $\tens{C} = {}^t\tens{F}.\tens{F}$ où \tens{F} est le gradient de la transformation;
+$q$ est un champ scalaire associé à la liaison d'isochorie.
+\end{flushleft}
+\end{itemize}
+
+\subsection{Méthode des déplacements}
+On suppose que la transformation $\phi : M(R,\Theta, Z) \rightarrow m(r, \theta, z)$ est de la forme:
+
+$$r=\beta(R)R, \theta=\Theta, z=\mu Z$$
+
+\begin{flushleft}
+où\\
+$\beta(R)>1$ est une fonction de R;\\
+$\mu>1$ est une constante.
+\end{flushleft}
+
+Comparaison de cette transformation à la structure après transformation:
+\begin{itemize}
+\item Pour tout point $M(0, \Theta, Z)$ de l'axe $(0z)$, $\phi(M) = m(0, \theta, \mu Z)$ : $m$ appartient à $(Oz)$ donc l'axe $(Oz)$ reste fixe.
+\item $\phi (0, 0, 0) = (0, 0, 0)$ donc l'origine $O(0, 0, 0)$ reste fixe.
+\item Pour tout point $M(R, \Theta, H)$,  $\phi(M) = m(\beta (R) R, \Theta, \mu H)$ Ainsi le cylindre a une longueur de $\mu H$ après transformation.
+\item Pour tout point $M(A, \Theta, Z)$ de la paroi interne du cylindre, $\phi(M) = m(\beta(A) A, \theta, \mu Z)$ or la paroi interne après transformation est de rayon $\lambda A$ d'où $$\beta(A) = \lambda$$
+\item Pour tout point $M(A+E, \Theta, Z)$ de la paroi externe du cylindre, $\phi(M) = m(\beta(A+E) (A+E), \Theta, \mu Z)$ or la paroi externe après transformation est de rayon $\lambda A + e$ d'où
+$$\beta(A+E)(A+E) = \lambda A+ e$$
+\end{itemize}
+donc cette transformation convient.
+
+Calcul du gradient de transformation :
+$$
+\begin{array}{rcl}
+\tens{F} &=& \tens{grad} \uline{\phi}\\
+&=& (R\frac{d\beta}{dR} +\beta(R)) \uline{e_r}\otimes \uline{e_R} + \beta(R) \uline{e_\theta}\otimes \uline{e_\Theta} + \mu \uline{e_z}\otimes \uline{e_Z}
+\end{array}
+$$
+
+\subsection{Condition d'isochorie}
+La transformation est isochore donc le volume ne change pas, alors :
+
+\begin{eqnarray*}
+det \tens{F} &=& 1\\
+(R \frac{d\beta(R)}{dR} + \beta(R)) \beta(R) \mu &=& 1\\
+\frac{d (R \beta(R))}{dR} \beta(R) &=& \frac {1}{\mu}\\
+\frac{d (R \beta(R))}{dR} R\beta(R) &=& \frac {R}{\mu}\\
+R\beta(R) d(R\beta(R)) &=& \frac{R}{\mu} dR\\
+\frac{(R\beta(R))^2}{2} &=& \frac{R^2}{2\mu}+K\\
+\end{eqnarray*}
+
+où K est une constante. Or d'après ci-dessus, $\beta(A) = \lambda$, d'où
+
+\begin{eqnarray*}
+\frac{A^2\lambda^2}{2} = \frac{A^2}{2\mu}+K &\Longrightarrow& K = \frac{A^2}{2}\left(\lambda^2-\frac{1}{\mu}\right)\\
+\frac{R^2 \beta^2(R)}{2} &=& \frac{R^2}{2\mu}+\frac{A^2}{2}\left(\lambda^2 - \frac{1}{\mu}\right)\\
+\beta(R) &=& \sqrt{\frac{1}{\mu}+ \frac{A^2}{R^2}\left(\lambda^2 - \frac{1}{\mu}\right)}\\
+\end{eqnarray*}
+
 \subsection{}
 
-$\beta$ est liée a $\delta$ de la façon suivante
+$\beta$ est liée a $\delta$ de la façon suivante :
 
 \begin{center}
-\begin{array}{rll}
 \begin{displaymath}
+\begin{array}{rll}
+
 & \beta^2 & = \FRAC{1}{\mu}+\frac{1}{\left(1+\delta\right)^2}\left(\lambda^2-\frac{1}{\mu}\right)  \\
 &  & \displaystyle \approx  \frac{1}{\mu}+\left(1-2\delta\right)\left(\lambda^2-\frac{1}{\mu}\right) \\
 \Rightarrow & \beta & \displaystyle \approx \left[\frac{1}{\mu} + \left(1-2\delta \right)\left(\lambda^2 -\frac{1}{\mu} \right) \right]^{\frac{1}{2}} \\
 & &\displaystyle \approx \lambda\left[1+\left(\frac{1}{\lambda^2\mu}-1 \right)\delta \right]\\
-\end{displaymath}
 \end{array}
-
+\end{displaymath}
 \end{center}
 
 Comme $\delta \ll 1$ on peut prendre $\beta=\lambda$ et on trouve
@@ -122,7 +197,6 @@ On fait le calcul directement: $$I_1=\text{tr}\left(\underline{\underline{B}}\ri
 	$$I_2 = \frac{1}{2}\left(I_1^2+\text{tr}\left(\underline{\underline{B}}\cdot\underline{\underline{B}}\right)\right) = \frac{1}{2}\left(I_1^2+\text{tr}\left( \frac{1}{\lambda^4\mu^4}\underline{e}_R\otimes\underline{e}_R + \lambda^4\underline{e}_\Theta\otimes\underline{e}_\Theta + \mu^4\underline{e}_Z\otimes\underline{e}_Z \right)\right)  = \frac{1}{\mu^2}+\frac{1}{\lambda^2}+\lambda^2\mu^2$$
 
 
-%question 1.6
 \subsection{}
 
 L'hypothèse $\sigma_{rr} \ll \sigma_{\theta\theta}$, en utilisant l'équation (1) de l'énoncé, aboutit à la rélation suivante:
@@ -143,7 +217,6 @@ $$\sigma_{\theta\theta} = 2 \rho_0 \frac{\partial\psi}{\partial I_1} \left( \lam
 
 $$\sigma_{zz} = 2 \rho_0 \frac{\partial\psi}{\partial I_1} \left( \mu^2 - \frac{1}{\lambda^2\mu^2} \right) - 2 \rho_0 \frac{\partial\psi}{\partial I_2} \left( \frac{1}{\mu^2} - \lambda^2\mu^2 \right)$$
 
-%question 1.7
 \subsection{}
 
 Prenons comme sous-système le demi cylindre coupé par le plan $zOy$ et appliquons le Théorème d'Euler sur lui. Sur le bords, on considère le tenseur de contraintes $\tens{\sigma}$ bien entendu constant. Donc, les efforts dans l'axe $\vec{Oy}$, sont annulés.
@@ -170,7 +243,7 @@ $$
 \frac{2\rho_0}{\lambda^2\mu} \left (\frac{\partial\psi}{\partial I_1} + \frac{\partial\psi}{\partial I_2} \mu^2 \right) \left ( \lambda^2 - \frac{1}{\lambda^2\mu^2} \right) = \frac{\Delta p}{\epsilon} \\
 \frac{2\rho_0}{\lambda^2\mu^3} \left [\frac{\partial\psi}{\partial I_1} (2\mu^4\lambda^2-\mu^2\lambda^4-1) + \frac{\partial\psi}{\partial I_2} (\mu^4 \lambda^4 - 2\lambda^2 + \mu^2) \right] = \frac{T_a}{\pi A^2 \epsilon}
 \end{cases}
-$$
+$$git
 
 \subsection{}
 \begin{enumerate}
