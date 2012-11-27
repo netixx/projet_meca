@@ -106,7 +106,7 @@ $\beta$ est liée a $\delta$ de la façon suivante
 
 \end{center}
 
-Comme $\delta<<1$ on peut prendre $\beta=\lambda$ et on trouve
+Comme $\delta \ll 1$ on peut prendre $\beta=\lambda$ et on trouve
 
 $$\underline{\underline{F}} = \frac{1}{\lambda\mu}\underline{e}_r\otimes\underline{e}_R+\lambda\underline{e}_\theta\otimes\underline{e}_\Theta+\mu\underline{e}_z\otimes\underline{e}_Z $$
 
@@ -139,7 +139,15 @@ $$\sigma_{zz} = 2 \rho_0 \frac{\partial\psi}{\partial I_1} \left( \mu^2 - \frac{
 
 \subsection*{1.7}
 
+Prenons comme sous-système le demi cylindre coupé par le plan $zOy$ et appliquons le Théorème d'Euler sur lui. Sur le bords, on considère le tenseur de contraintes $\tens{\sigma}$ bien entendu constant. Donc, les efforts dans l'axe $\vec{Oy}$, sont annulés.
 
+$$p_i \cdot 2Ha \verseur{y} - p_e \cdot 2H (a+e) \verseur{y} - 2He \cdot \sigma_{\theta\theta} \verseur{y} = 0$$
+
+$$\sigma_{\theta\theta} = \frac{a\Delta p}{e} - p_e \approx  \frac{a\Delta p}{e} \quad\mathrm{car }\quad e \ll a$$
+
+Obs: Le fait que $\sigma_{rr}$ soit de l'ordre de $p_i$ ou $p_e$ et que l'on a trouvé $\sigma_{\theta\theta} \gg p_e$ confirme notre suposition d'auparavant $\sigma_{rr} \ll \sigma_{\theta\theta}$.
+
+Les conditions aux bords $z=0$ ($S_0$) et $z=H$ ($S_H$), avec l'hypothèse $\sigma_{zz} = \mathrm{cte}$, nous donnent directement la rélation $T \approx 2\pi a e \cdot \sigma_{zz}$. Avec la contrainte $\sigma_{\theta\theta} \approx \frac{a\Delta p}{e}$ le jeux de variables indéfinies du problème $(\mu, \lambda)$ diminue de dimension, si on n'impose pas une valeur à $T$. En reflechissant au cercle de Mohr et aux conditions limites de rupture, il est raisonable de dire que le système admettrait une solution qui minimise l'écart entre $\sigma_{\theta\theta}$ et $\sigma_{zz}$. Cela se passe quand $\mu \approx \lambda$, d'àpres les équations dans la question 1.6. Cela implique que l'effort d'équilibre vaudrait $T \approx \pi ae \cdot \frac{a\Delta p}{e} = \pi a^2 \Delta p$.
 
 \subsection{}
 \begin{enumerate}
