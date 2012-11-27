@@ -68,11 +68,14 @@
 \newcommand{\INF}{\displaystyle\inf}
 
 \newcommand{\tens}{\uuline}
-\newcommand{\verseur}[1]{\uline{e_{#1}}}
+\newcommand{\verseur}[1]{\uline{e}_{#1}}
 \newcommand{\diage}[1]{\uline{e_{#1}} \otimes \uline{e_{#1}}}
 \newcommand{\diveleme}[3]{\FRAC{\partial #1_{#2#3}}{\partial #3} e_{#2}}
 \newcommand{\dive}{\mathop{\rm div}}
 \newcommand{\grad}{\mathop{\rm grad}}
+
+\renewcommand{\theequation}{\Alph{equation}}
+
 \begin{document}
 
 \title{\titleinfo}
@@ -96,22 +99,24 @@
 \item géométrie initiale:
 Cylindre de section droite circulaire, de rayon intérieur A et d'épaisseur E, délimité par 2 plans perpendiculaires à l'axe
 \item cinématique imposée:
-Origine et directrice fixes, déplacement donné par les surfaces  S0,  SH, Sint, Sext
+Origine et directrice fixes, déplacement donné par les surfaces $S_{0}$,  $S_H$, $S_{int}$, $S_{ext}$
 \item efforts imposés:
 	\begin{itemize}
 	\item L'effort volumique est nul car on néglige le poids du système.
 	\item Sur la paroi interne $S_{int} (R=A)$:  $\uline{T_d} = -p_i \uline{n}$ et $\uline{n} =- \uline{e_r}$
 	\item Sur la paroi externe $S_{ext} (R=A+E)$:  $\uline {T_d} = -p_e \uline{n}$ et $\uline{n} = \uline{e_r}$
-	\item sur $S_H (Z=H)$ : $\uline{T_d} = \frac{T}{S_H}\uline{n}$ et $\uline{n} = \uline{e_z}$
+	\item sur $S_H (Z=H)$ : $\uline{T_d} = \frac{T}{S_H}\uline{n}$ et $\uline{n} = \uline{e_z}$ (en négligeant l'épaisseur devant le diamètre)
 	\end{itemize}
-\item comportement: le matériau est élastomère isotrope avec liaison interne d'isochorie d'où sa loi de comportement est:
+\item comportement: le matériau est élastomère isotrope avec liaison interne et isochorie, donc sa loi de comportement est:
 \begin{center}
-$$\tens{\sigma}=2\rho_0\frac{\partial\psi}{\partial I_1}(I_1,I_2)\tens{B} -2\rho_0\frac{\partial\psi}{\partial I_2}(I_1,I_2) \tens{B}^{-1}+q\mathds{1}$$
+$$
+\tens{\sigma}=2\rho_0\frac{\partial\psi}{\partial I_1}(I_1,I_2)\tens{B} -2\rho_0\frac{\partial\psi}{\partial I_2}(I_1,I_2) \tens{B}^{-1}+q\mathds{1}$$
 \end{center}
-où
+où :
 \begin{flushleft}
-$\rho_0$ est la masse volumique;
+$\rho_0$ est la masse volumique;\\
 $\psi$ est l'énergie libre massique fonction de la déformation de Green-Lagrange \tens{e} au travers de ses deux premiers invariants $I_1= tr(\tens{B})$ et $I_2=\frac{1}{2}({I_1}^2-\tens{C}:\tens{C})$ et $\tens{C} = {}^t\tens{F}.\tens{F}$ où \tens{F} est le gradient de la transformation;
+\\
 $q$ est un champ scalaire associé à la liaison d'isochorie.
 \end{flushleft}
 \end{itemize}
@@ -131,9 +136,13 @@ Comparaison de cette transformation à la structure après transformation:
 \begin{itemize}
 \item Pour tout point $M(0, \Theta, Z)$ de l'axe $(0z)$, $\phi(M) = m(0, \theta, \mu Z)$ : $m$ appartient à $(Oz)$ donc l'axe $(Oz)$ reste fixe.
 \item $\phi (0, 0, 0) = (0, 0, 0)$ donc l'origine $O(0, 0, 0)$ reste fixe.
-\item Pour tout point $M(R, \Theta, H)$,  $\phi(M) = m(\beta (R) R, \Theta, \mu H)$ Ainsi le cylindre a une longueur de $\mu H$ après transformation.
-\item Pour tout point $M(A, \Theta, Z)$ de la paroi interne du cylindre, $\phi(M) = m(\beta(A) A, \theta, \mu Z)$ or la paroi interne après transformation est de rayon $\lambda A$ d'où $$\beta(A) = \lambda$$
-\item Pour tout point $M(A+E, \Theta, Z)$ de la paroi externe du cylindre, $\phi(M) = m(\beta(A+E) (A+E), \Theta, \mu Z)$ or la paroi externe après transformation est de rayon $\lambda A + e$ d'où
+\item Pour tout point $M(R, \Theta, H)$,  $\phi(M) = m(\beta (R) R, \Theta, \mu H)$ Ainsi le cylindre a une longueur $\mu H$ après transformation.
+\item Pour tout point $M(A, \Theta, Z)$ de la paroi interne du cylindre, $\phi(M) = m(\beta(A) A, \theta, \mu Z)$ or la paroi interne après transformation a pour rayon $\lambda A$ d'où 
+\begin{equation}
+\beta(A) = \lambda
+\label{eq:condition_limite_beta}
+\end{equation}
+\item Pour tout point $M(A+E, \Theta, Z)$ de la paroi externe du cylindre, $\phi(M) = m(\beta(A+E) (A+E), \Theta, \mu Z)$ or la paroi externe après transformation est de rayon $\lambda A + e$ d'où :
 $$\beta(A+E)(A+E) = \lambda A+ e$$
 \end{itemize}
 donc cette transformation convient.
@@ -141,24 +150,32 @@ donc cette transformation convient.
 Calcul du gradient de transformation :
 $$
 \begin{array}{rcl}
-\tens{F} &=& \tens{grad} \uline{\phi}\\
-&=& (R\frac{d\beta}{dR} +\beta(R)) \uline{e_r}\otimes \uline{e_R} + \beta(R) \uline{e_\theta}\otimes \uline{e_\Theta} + \mu \uline{e_z}\otimes \uline{e_Z}
+\tens{F} &=& \tens{grad} \left(\uline{\phi}\right)\\
+&=& \left(R\frac{d\beta}{dR} +\beta(R)\right) \uline{e_r}\otimes \uline{e_R} + \beta(R)\ \uline{e_\theta}\otimes \uline{e_\Theta} + \mu\ \uline{e_z}\otimes \uline{e_Z}
 \end{array}
 $$
+On peut remarquer qu'on a : $\uline{e}_{R} = \uline{e}_{r}$, $\uline{e}_{\Theta} = \uline{e}_{\theta}$ et $\uline{e}_{Z} = \uline{e}_{z}$ d'après la transformation choisie. Dans ce cas, l'expression du gradient se simplifie en :
+
+\begin{equation}
+\fbox{$
+\tens{F} =  \left(R\frac{d\beta}{dR} +\beta(R)\right) \diage{r} + \beta(R)\ \diage{\theta} + \mu\ \diage{z}
+$}
+\label{eq:exp_tenseur_compliquee}
+\end{equation}
 
 \subsection{Condition d'isochorie}
-La transformation est isochore donc le volume ne change pas, alors :
+La transformation est isochore (volume constant) donc :
 
 \begin{eqnarray*}
-det \tens{F} &=& 1\\
-(R \frac{d\beta(R)}{dR} + \beta(R)) \beta(R) \mu &=& 1\\
+det( \tens{F}) &=& 1\\
+\left(R \frac{d\beta(R)}{dR} + \beta(R)\right)\cdot \beta(R) \cdot \mu &=& 1\\
 \frac{d (R \beta(R))}{dR} \beta(R) &=& \frac {1}{\mu}\\
 \frac{d (R \beta(R))}{dR} R\beta(R) &=& \frac {R}{\mu}\\
 R\beta(R) d(R\beta(R)) &=& \frac{R}{\mu} dR\\
 \frac{(R\beta(R))^2}{2} &=& \frac{R^2}{2\mu}+K\\
 \end{eqnarray*}
 
-où K est une constante. Or d'après ci-dessus, $\beta(A) = \lambda$, d'où
+où K est une constante. Or d'après \ref{eq:condition_limite_beta}, $\beta(A) = \lambda$, d'où
 
 \begin{eqnarray*}
 \frac{A^2\lambda^2}{2} = \frac{A^2}{2\mu}+K &\Longrightarrow& K = \frac{A^2}{2}\left(\lambda^2-\frac{1}{\mu}\right)\\
@@ -182,24 +199,31 @@ $\beta$ est liée a $\delta$ de la façon suivante :
 \end{displaymath}
 \end{center}
 
-Comme $\delta \ll 1$ on peut prendre $\beta=\lambda$ et on trouve
+Comme $\delta \ll 1$ on peut prendre $\beta=\lambda$ et on trouve (en injectant dans \ref{eq:exp_tenseur_compliquee})
 
-$$\underline{\underline{F}} = \frac{1}{\lambda\mu}\underline{e}_r\otimes\underline{e}_R+\lambda\underline{e}_\theta\otimes\underline{e}_\Theta+\mu\underline{e}_z\otimes\underline{e}_Z $$
-
+$$
+\underline{\underline{F}} = \frac{1}{\lambda\mu}\underline{e}_r\otimes\underline{e}_R+\lambda\underline{e}_\theta\otimes\underline{e}_\Theta+\mu\underline{e}_z\otimes\underline{e}_Z $$
+En effet, 
+$\left(R \FRAC{d\beta(R)}{dR} + \beta(R)\right)\cdot \beta(R) \cdot \mu = 1$ d'où : 
+$$
+\left(R \frac{d\beta(R)}{dR} + \beta(R)\right) = \frac{1}{\beta(R) \mu} = \frac{1}{\lambda \mu} 
+$$
 Ce qui donne :
 
-$$ \frac{e}{E} = \frac{1}{\lambda\mu} \Longrightarrow \frac{e}{a} = \frac{1}{\lambda\mu} \cdot \frac{E}{\lambda A} = \frac{ \epsilon}{\lambda^2 \mu}$$
+$$ \frac{e}{E} = \frac{1}{\lambda\mu} \Longrightarrow \frac{e}{a} = \frac{1}{\lambda\mu} \cdot \frac{E}{\lambda A} = \frac{ \epsilon}{\lambda^2 \mu} \hspace{1cm} \fbox{$\FRAC{e}{a} = \FRAC{\varepsilon}{\lambda^2 \mu}$ }
+$$
 
 
 \subsection{Les invariants de la transformation}
-On fait le calcul directement: $$I_1=\text{tr}\left(\underline{\underline{B}}\right) = \text{tr}\left(\underline{\underline{F}}\cdot{}^{t}\underline{\underline{F}}\right) = \text{tr}\left(\frac{1}{\lambda^2\mu^2}\underline{e}_R\otimes\underline{e}_R + \lambda^2\underline{e}_\Theta\otimes\underline{e}_\Theta + \mu^2\underline{e}_Z\otimes\underline{e}_Z \right)=\left(\frac{1}{\lambda\mu}\right)^2+\lambda^2+\mu^2$$
+On fait le calcul directement: 
+$$I_1=\text{tr}\left(\underline{\underline{B}}\right) = \text{tr}\left(\underline{\underline{F}}\cdot{}^{t}\underline{\underline{F}}\right) = \text{tr}\left(\frac{1}{\lambda^2\mu^2}\underline{e}_R\otimes\underline{e}_R + \lambda^2\underline{e}_\Theta\otimes\underline{e}_\Theta + \mu^2\underline{e}_Z\otimes\underline{e}_Z \right)=\fbox{$\left(\FRAC{1}{\lambda\mu}\right)^2+\lambda^2+\mu^2 = I_1$}$$
 
-	$$I_2 = \frac{1}{2}\left(I_1^2+\text{tr}\left(\underline{\underline{B}}\cdot\underline{\underline{B}}\right)\right) = \frac{1}{2}\left(I_1^2+\text{tr}\left( \frac{1}{\lambda^4\mu^4}\underline{e}_R\otimes\underline{e}_R + \lambda^4\underline{e}_\Theta\otimes\underline{e}_\Theta + \mu^4\underline{e}_Z\otimes\underline{e}_Z \right)\right)  = \frac{1}{\mu^2}+\frac{1}{\lambda^2}+\lambda^2\mu^2$$
+$$I_2 = \frac{1}{2}\left(I_1^2+\text{tr}\left(\underline{\underline{B}}\cdot\underline{\underline{B}}\right)\right) = \frac{1}{2}\left(I_1^2+\text{tr}\left( \frac{1}{\lambda^4\mu^4}\underline{e}_R\otimes\underline{e}_R + \lambda^4\underline{e}_\Theta\otimes\underline{e}_\Theta + \mu^4\underline{e}_Z\otimes\underline{e}_Z \right)\right)  = \fbox{$\FRAC{1}{\mu^2}+\frac{1}{\lambda^2}+\lambda^2\mu^2 = I_2$}$$
 
 
 \subsection{Calcul de la contrainte de Cauchy}
 
-L'hypothèse $\sigma_{rr} \ll \sigma_{\theta\theta}$, en utilisant l'équation (1) de l'énoncé, aboutit à la rélation suivante:
+L'hypothèse $\sigma_{rr} \ll \sigma_{\theta\theta}$, en utilisant l'équation (1) de l'énoncé, aboutit à la relation suivante puisque $\tens{\sigma} = \tens{\sigma'} + q \mathds{1}$:
 
 $$\sigma_{\theta\theta} - \sigma_{rr} = \sigma'_{\theta\theta} - \sigma'_{rr} \approx \sigma_{\theta\theta}$$
 
@@ -213,23 +237,23 @@ $$ \tens{B}^{-1} = \lambda^2\mu^2 \diage{R} + \frac{1}{\lambda^2} \diage{\Theta}
 
 En prenant les approximations $\sigma_{\theta\theta} \approx \sigma'_{\theta\theta} - \sigma'_{rr}$ et $\sigma_{zz} \approx \sigma'_{zz} - \sigma'_{rr}$, on arrive à:
 
-$$\sigma_{\theta\theta} = 2 \rho_0 \frac{\partial\psi}{\partial I_1} \left( \lambda^2 - \frac{1}{\lambda^2\mu^2} \right) - 2 \rho_0 \frac{\partial\psi}{\partial I_2} \left( \frac{1}{\lambda^2} - \lambda^2\mu^2 \right)$$
+$$\fbox{$\sigma_{\theta\theta} = 2 \rho_0 \FRAC{\partial\psi}{\partial I_1} \left( \lambda^2 - \FRAC{1}{\lambda^2\mu^2} \right) - 2 \rho_0 \FRAC{\partial\psi}{\partial I_2} \left( \FRAC{1}{\lambda^2} - \lambda^2\mu^2 \right)$}$$
 
-$$\sigma_{zz} = 2 \rho_0 \frac{\partial\psi}{\partial I_1} \left( \mu^2 - \frac{1}{\lambda^2\mu^2} \right) - 2 \rho_0 \frac{\partial\psi}{\partial I_2} \left( \frac{1}{\mu^2} - \lambda^2\mu^2 \right)$$
+$$\fbox{$\sigma_{zz} = 2 \rho_0 \FRAC{\partial\psi}{\partial I_1} \left( \mu^2 - \FRAC{1}{\lambda^2\mu^2} \right) - 2 \rho_0 \FRAC{\partial\psi}{\partial I_2} \left( \FRAC{1}{\mu^2} - \lambda^2\mu^2 \right)$}$$
 
-\subsection{Calcul explicit de la contrainte de Cauchy à l'aide du theorème d'Euler}
+\subsection{Calcul explicite de la contrainte de Cauchy à l'aide du théorème d'Euler}
 
-Prenons comme sous-système le demi cylindre coupé par le plan $zOy$ et appliquons le Théorème d'Euler sur lui. Sur le bords, on considère le tenseur de contraintes $\tens{\sigma}$ bien entendu constant. Donc, les efforts dans l'axe $\vec{Oy}$, sont annulés.
+Prenons comme sous-système le demi cylindre coupé par le plan $zOy$ et appliquons le Théorème d'Euler sur celui-ci. Dans le système (composé de la paroi du ballon), on considère le tenseur des contraintes $\tens{\sigma}$ constant puisqu'on néglige l'épaisseur du ballon. Donc, les efforts selon l'axe $Oy$ sont nuls (ils se compensent par symétrie).
 
 $$p_i \cdot 2Ha \verseur{y} - p_e \cdot 2H (a+e) \verseur{y} - 2He \cdot \sigma_{\theta\theta} \verseur{y} = 0$$
 
 $$\sigma_{\theta\theta} = \frac{a\Delta p}{e} - p_e \approx  \frac{a\Delta p}{e} \quad\mathrm{car }\quad e \ll a$$
 
-Obs: Le fait que $\sigma_{rr}$ soit de l'ordre de $p_i$ ou $p_e$ et que l'on a trouvé $\sigma_{\theta\theta} \gg p_e$ confirme notre suposition d'auparavant $\sigma_{rr} \ll \sigma_{\theta\theta}$.
+Remarque : Le fait que $\sigma_{rr}$ soit de l'ordre de $p_i$ ou $p_e$ et que l'on ait trouvé $\sigma_{\theta\theta} \gg p_e$ confirme notre supposition précédente, i.e. $\sigma_{rr} \ll \sigma_{\theta\theta}$.
 
-Les conditions aux bords $z=0$ ($S_0$) et $z=H$ ($S_H$), avec l'hypothèse $\sigma_{zz} = \mathrm{cte}$, nous donnent directement la rélation $T \approx 2\pi a e \cdot \sigma_{zz}$. Avec la contrainte $\sigma_{\theta\theta} \approx \frac{a\Delta p}{e}$ le jeux de variables indéfinies du problème $(\mu, \lambda)$ diminue de dimension, si on n'impose pas une valeur à $T$. En reflechissant au cercle de Mohr et aux conditions limites de rupture, il est raisonable de dire que le système admettrait une solution qui minimise l'écart entre $\sigma_{\theta\theta}$ et $\sigma_{zz}$. Cela se passe quand $\mu \approx \lambda$, d'àpres les équations dans la question 1.6. Cela implique que l'effort d'équilibre vaudrait $T \approx \pi ae \cdot \frac{a\Delta p}{e} = \pi a^2 \Delta p$.
+Les conditions aux bords $z=0$ ($S_0$) et $z=H$ ($S_H$), avec l'hypothèse $\sigma_{zz} = \mathrm{cte}$, nous donnent directement la relation $T \approx 2\pi a e \cdot \sigma_{zz}$. Avec la contrainte $\sigma_{\theta\theta} \approx \frac{a\Delta p}{e}$ , le jeux de variables indéfinies du problème $(\mu, \lambda)$ diminue de dimension, si on n'impose pas de valeur à $T$. En considérant le cercle de Mohr et les conditions limites de rupture, il est raisonnable de dire que le système admettrait une solution qui minimise l'écart entre $\sigma_{\theta\theta}$ et $\sigma_{zz}$. Cela se passe quand $\mu \approx \lambda$, d'après les équations dans la question 1.6. Cela implique que l'effort d'équilibre vaudrait $T \approx \pi ae \cdot \frac{a\Delta p}{e} = \pi a^2 \Delta p$.
 
-On note $T = T_{\Delta p} + T_a = \pi a^2 \Delta p + T_a$ et on introduit les résultats trouvés ci-dessus dans le systeme d'équations de la question précedente.
+On note $T = T_{\Delta p} + T_a = \pi a^2 \Delta p + T_a$ et on introduit les résultats trouvés ci-dessus dans le système d'équations de la question précédente.
 
 $$
 \begin{cases}
@@ -240,36 +264,38 @@ $$
 
 $$
 \begin{cases}
-\frac{2\rho_0}{\lambda^2\mu} \left (\frac{\partial\psi}{\partial I_1} + \frac{\partial\psi}{\partial I_2} \mu^2 \right) \left ( \lambda^2 - \frac{1}{\lambda^2\mu^2} \right) = \frac{\Delta p}{\epsilon} \\
-\frac{2\rho_0}{\lambda^2\mu^3} \left [\frac{\partial\psi}{\partial I_1} (2\mu^4\lambda^2-\mu^2\lambda^4-1) + \frac{\partial\psi}{\partial I_2} (\mu^4 \lambda^4 - 2\lambda^2 + \mu^2) \right] = \frac{T_a}{\pi A^2 \epsilon}
+\FRAC{2\rho_0}{\lambda^2\mu} \left (\FRAC{\partial\psi}{\partial I_1} + \FRAC{\partial\psi}{\partial I_2} \mu^2 \right) \left ( \lambda^2 - \FRAC{1}{\lambda^2\mu^2} \right) = \FRAC{\Delta p}{\epsilon} \\
+\FRAC{2\rho_0}{\lambda^2\mu^3} \left [\FRAC{\partial\psi}{\partial I_1} (2\mu^4\lambda^2-\mu^2\lambda^4-1) + \FRAC{\partial\psi}{\partial I_2} (\mu^4 \lambda^4 - 2\lambda^2 + \mu^2) \right] = \FRAC{T_a}{\pi A^2 \epsilon}
 \end{cases}
 $$
 
 \subsection{Analyse numérique du problème}
 \begin{enumerate}
-\item[a]
-La courbe $\mu(\lambda)$ nous indique que l'allongement de la partie gonflée du ballon est à peu près proportionnel au grossissement du diamètre (pente affine). La partie constante que l'on trouve vers $\lambda = 1$ indique que le ballon à une tendance à se gonfler par son rayon plutôt que par le gonflement d'un longueur plus grande de ballon, du moins dans la phase initiale du gonflage.
+\item[(a)]
+La courbe $\mu(\lambda)$ nous indique que l'allongement de la partie gonflée du ballon est à peu près proportionnel au grossissement du diamètre (pente affine). La partie constante que l'on trouve vers $\lambda = 1$ indique que le ballon à une tendance à se gonfler par son rayon plutôt que par le gonflement d'une longueur plus grande de ballon, du moins dans la phase initiale du gonflage.
 
-\hspace{0.8cm} Étudier le gonflement du ballon revient donc à étudier l'élargissement d'une section du ballon.
+\hspace{0.8cm} Étudier le gonflement du ballon revient donc approximativement à étudier l'élargissement d'une section du ballon.
 
-\hspace{0.8cm} On retrouve les deux premières étapes décrites dans l'introduction pour toutes les lois : d'abord la pente de $\Delta p (V/V_{ini})$ est forte, c'est-à-dire qu'il faut appliquer un fort différentiel de pression pour obtenir un faible accroissement du volume du ballon (un faible gonflage donc). Ensuite, la pente devient négative, il faut donc appliquer de moins en moins de différentiel de pression pour obtenir un gonflement supérieur.
+\hspace{0.8cm} Pour toutes les lois, on retrouve les deux premières étapes décrites dans l'introduction : d'abord la pente de $\Delta p (V/V_{ini})$ est forte, c'est-à-dire qu'il faut appliquer un fort différentiel de pression pour obtenir un faible accroissement du volume du ballon (un faible gonflage donc).
 
-\hspace{0.8cm}Enfin, les lois de Gent et la loi de Langevin confirment l'observation faite, il devient plus dur de gonfler le ballon une fois qu'on atteint un $\lambda$ important. Il parait logique d'avoir une divergence du différentiel de pression vu qu'un gonflement infini du ballon n'est pas possible (explosion), la loi néo-hookienne ne prévoit pas ce comportement.
+\hspace{0.8cm}Ensuite, la pente devient négative, il faut donc appliquer de moins en moins de différentiel de pression pour obtenir un gonflement supérieur.
+
+\hspace{0.8cm}Enfin, les lois de Gent et la loi de Langevin confirment l'observation faite pour la dernière étape, il devient plus dur de gonfler le ballon une fois qu'on atteint un $\lambda$ important. Il parait logique d'avoir une divergence du différentiel de pression vu qu'un gonflement infini du ballon n'est pas possible (explosion), en revanche, la loi néo-hookienne ne prévoit pas ce comportement.
 
 On retrouve ces observations sur $\Delta p (\lambda)$.
 
-\item[b]
-En pratique, on observe bien ce comportement lors du gonflement du ballon.
+\item[(b)]
+En pratique, on observe bien ce comportement lors du gonflement du ballon. Il est difficile de le gonfler dans un premier temps, puis le gonflement devient plus aisé, enfin il est quasiment impossible de le gonfler démesurément.
 
-\item[c]
+\item[(c)]
 La loi néo-hookienne parait impossible à admettre pour des gonflements importants puisqu'elle ne prévoit pas la divergence des fonctions lorsque $\lambda$ devient grand. Elle reste cependant valable pour de très petits gonflements.
 
 \hspace{0.8cm}Les deux autres lois sont quasi-identiques en comportement, elles diffèrent seulement dans les valeurs, les valeurs de la loi de Gent étant supérieures à celle de la loi de Langevin.
 
-\item[d]
+\item[(d)]
 L'intérêt de tirer sur le ballon permet de changer le comportement décrit au début de l'item a. En effet, lorsqu'on tire sur le bout du ballon, il acquiert une propension à augmenter la zone "gonflée" ($\mu$ plus important) plutôt que d'augmenter son rayon : il absorbe l'air ajouté en augmentant la zone gonflée plutôt qu'en augmentant le rayon de la zone déjà gonflée.
 
-\hspace{0.8cm}Cette action à pour effet de garder $\lambda$ proche de 1 lors du gonflement puisque l'air ajouté est réparti en longueur dans le ballon (par le biais de $\mu$), le différentiel de pression à appliquer reste donc faible et le différentiel de pression reste petit, le ballon est donc plus facile à gonfler. On change ainsi le comportement "naturel" du ballon en tirant sur ces fibres de façon orthogonale à la force qu'applique le différentiel de pression sur le ballon, et ce nouveau comportement rend le gonflement plus facile.
+\hspace{0.8cm}Cette action à pour effet de garder $\lambda$ proche de 1 lors du gonflement puisque l'air ajouté est réparti en longueur dans le ballon (par le biais de $\mu$), le différentiel de pression à appliquer reste donc faible et le différentiel de pression reste petit, le ballon est donc plus facile à gonfler. On change ainsi le comportement "naturel" du ballon en tirant sur ces fibres de façon orthogonale à la force qu'applique le différentiel de pression sur la partie gonflée du ballon, et ce nouveau comportement rend le gonflement plus facile.
 \end{enumerate}
 %appendice éventuel
 %\clearpage
