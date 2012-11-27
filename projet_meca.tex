@@ -20,12 +20,12 @@
 	%\usepackage{float}
 
 %définition du titre du document
-\newcommand{\titleinfo}{\textcolor{MidnightBlue}{MEC431 – Projet}}
+\newcommand{\titleinfo}{\textcolor{MidnightBlue}{MEC431 – Projet (1ère partie)}}
  %\newcommand{\sectionprefix}{Q}
 
 \usepackage{tikz}
 \usepackage{url}
-\usepackage{hyperref}
+%\usepackage{hyperref} On n'a pas besoin pour le moment
 %\usepackage{pst-plot}
 %\usepackage{pst-grad}
 %\usepackage{pst-node}
@@ -166,7 +166,7 @@ où K est une constante. Or d'après ci-dessus, $\beta(A) = \lambda$, d'où
 \beta(R) &=& \sqrt{\frac{1}{\mu}+ \frac{A^2}{R^2}\left(\lambda^2 - \frac{1}{\mu}\right)}\\
 \end{eqnarray*}
 
-\subsection{}
+\subsection{Développment limité au premier ordre de $\beta$}
 
 $\beta$ est liée a $\delta$ de la façon suivante :
 
@@ -190,14 +190,14 @@ Ce qui donne :
 
 $$ \frac{e}{E} = \frac{1}{\lambda\mu} \Longrightarrow \frac{e}{a} = \frac{1}{\lambda\mu} \cdot \frac{E}{\lambda A} = \frac{ \epsilon}{\lambda^2 \mu}$$
 
-%question 1.5
-\subsection{}
+
+\subsection{Les invariants de la transformation}
 On fait le calcul directement: $$I_1=\text{tr}\left(\underline{\underline{B}}\right) = \text{tr}\left(\underline{\underline{F}}\cdot{}^{t}\underline{\underline{F}}\right) = \text{tr}\left(\frac{1}{\lambda^2\mu^2}\underline{e}_R\otimes\underline{e}_R + \lambda^2\underline{e}_\Theta\otimes\underline{e}_\Theta + \mu^2\underline{e}_Z\otimes\underline{e}_Z \right)=\left(\frac{1}{\lambda\mu}\right)^2+\lambda^2+\mu^2$$
 
 	$$I_2 = \frac{1}{2}\left(I_1^2+\text{tr}\left(\underline{\underline{B}}\cdot\underline{\underline{B}}\right)\right) = \frac{1}{2}\left(I_1^2+\text{tr}\left( \frac{1}{\lambda^4\mu^4}\underline{e}_R\otimes\underline{e}_R + \lambda^4\underline{e}_\Theta\otimes\underline{e}_\Theta + \mu^4\underline{e}_Z\otimes\underline{e}_Z \right)\right)  = \frac{1}{\mu^2}+\frac{1}{\lambda^2}+\lambda^2\mu^2$$
 
 
-\subsection{}
+\subsection{Calcul de la contrainte de Cauchy}
 
 L'hypothèse $\sigma_{rr} \ll \sigma_{\theta\theta}$, en utilisant l'équation (1) de l'énoncé, aboutit à la rélation suivante:
 
@@ -217,7 +217,7 @@ $$\sigma_{\theta\theta} = 2 \rho_0 \frac{\partial\psi}{\partial I_1} \left( \lam
 
 $$\sigma_{zz} = 2 \rho_0 \frac{\partial\psi}{\partial I_1} \left( \mu^2 - \frac{1}{\lambda^2\mu^2} \right) - 2 \rho_0 \frac{\partial\psi}{\partial I_2} \left( \frac{1}{\mu^2} - \lambda^2\mu^2 \right)$$
 
-\subsection{}
+\subsection{Calcul explicit de la contrainte de Cauchy à l'aide du theorème d'Euler}
 
 Prenons comme sous-système le demi cylindre coupé par le plan $zOy$ et appliquons le Théorème d'Euler sur lui. Sur le bords, on considère le tenseur de contraintes $\tens{\sigma}$ bien entendu constant. Donc, les efforts dans l'axe $\vec{Oy}$, sont annulés.
 
@@ -243,9 +243,9 @@ $$
 \frac{2\rho_0}{\lambda^2\mu} \left (\frac{\partial\psi}{\partial I_1} + \frac{\partial\psi}{\partial I_2} \mu^2 \right) \left ( \lambda^2 - \frac{1}{\lambda^2\mu^2} \right) = \frac{\Delta p}{\epsilon} \\
 \frac{2\rho_0}{\lambda^2\mu^3} \left [\frac{\partial\psi}{\partial I_1} (2\mu^4\lambda^2-\mu^2\lambda^4-1) + \frac{\partial\psi}{\partial I_2} (\mu^4 \lambda^4 - 2\lambda^2 + \mu^2) \right] = \frac{T_a}{\pi A^2 \epsilon}
 \end{cases}
-$$git
+$$
 
-\subsection{}
+\subsection{Analyse numérique du problème}
 \begin{enumerate}
 \item[a]
 La courbe $\mu(\lambda)$ nous indique que l'allongement de la partie gonflée du ballon est à peu près proportionnel au grossissement du diamètre (pente affine). La partie constante que l'on trouve vers $\lambda = 1$ indique que le ballon à une tendance à se gonfler par son rayon plutôt que par le gonflement d'un longueur plus grande de ballon, du moins dans la phase initiale du gonflage.
