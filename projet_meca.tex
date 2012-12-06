@@ -59,6 +59,10 @@
 	%\newcommand{\E}{\mathds{E}}
 	%\renewcommand{\P}{\mathds{P}}
 
+%pour les transposées
+\usepackage{tensor}
+
+\newcommand{\trans}[1]{\tensor[^t]{#1}{}}
 
 %commande pour les opérateurs
 \newcommand{\INT}{\displaystyle\int}
@@ -299,7 +303,23 @@ L'intérêt de tirer sur le ballon permet de changer le comportement décrit au 
 \end{enumerate}
 
 \section{Analyse des essais de Treloar}
+\subsection{Hyposhèses et loi de comportement}
+Pour un matériau élastique isotrope, on peut supposer que la loi de comportement est totalement caractérisée par la donnée de son énergie libre en fonction des invariants $I_1= tr(\uuline{C})$ et $I_2=\frac{1}{2}({I_1}^2-\uuline{C}:\uuline{C})$ avec $\uuline{C} = 2\uuline{e}+1$ où \uuline{e} est le tenseur des déformations de Green Lagrange.
 
+\subsection*{Calcul du tenseur gradient de la transformation $\uuline{F}$}
+Le matériau est incompressible donc $det(\uuline{F})=1$ or $\uuline{F}=\sum_{i} \lambda_i \uline{e_i}\otimes \uline{e_i}$ d'où $\lambda_1\lambda_2\lambda_3=1$ donc $\lambda_3=\frac{1}{\lambda_2\lambda_3} $.
+
+\subsection*{Calcul des invariants $I_1$ et $I_2$}
+$$\uline{C}=^t\uuline{F}.\uuline{F}=\sum_{i} \lambda_i ^2\uline{e_i}\otimes \uline{e_i}$$
+$$I_1= tr(\uuline(C))=\lambda_1^2+\lambda_2^2+\lambda_3^2$$
+$$I_2=\frac{1}{2}(I_1^2 - tr(\uuline{C}.\uuline{C})) =\frac{1}{2}(2\lambda_1^2\lambda_2^2+2\lambda_2^2\lambda_3^2+2\lambda_1^2\lambda_3^2) =\lambda_1^2\lambda_2^2+\lambda_2^2\lambda_3^2+\lambda_1^2\lambda_3^2  $$
+
+\subsection*{Calcul des tenseurs de contraintes de Piola $\uuline{S}$ et de Cauchy $\uuline{\sigma}$}
+$$ \uuline{S} = \rho_0 \frac{\partial \psi}{\partial \uuline{e}} + \eta\frac{\partial \phi}{\partial \uuline{e}} $$ où $\phi= det(\uuline{C})-1 $
+or $\uuline{e}=\frac{1}{2}(\uuline{C}-\mathds{1})$ d'où $\frac{\partial \psi}{\partial \uuline{e}} =2 \frac{\partial \psi}{\partial \uuline{C}} = 2 \frac{\partial tr(\uuline(C))}{\partial \uuline{C}} = 2 \mathds{1}$
+et $\frac{\partial \phi}{\partial \uuline{e}} = 2 \frac{\partial \phi}{\partial \uuline{C}}= 2 \frac{\partial det(\uuline{C})}{\partial \uuline{C}}= 2 det(\uuline{C}) \uuline{C}^{-1}$
+
+$$\uuline{S} = \rho_0 \frac{\partial \psi}{\partial \uuline{e}} + \eta\frac{\partial \phi}{\partial \uuline{e}} $$
 
 
 
@@ -314,9 +334,36 @@ L'intérêt de tirer sur le ballon permet de changer le comportement décrit au 
 
 
 \section{Discussion}
+\subsection{Décomposition d'un transformation isochore}
+Pour un matériau incompressible, on a $det(\tens{F}) = 1$.
+Or on peut décomposer $\tens{F} = \tens{R}\cdot \tens{U}$ où :\\
+$\tens{R}$ est une rotation qui transforme $(\uline{e'_i})_i en (\uline{e''_i})_i$
+$\tens{U} = \SUM_i \lambda_i \uline{e'_i} \otimes \uline{e'_i}$
+\\
+On a donc :
+\begin{align*}
+det(\tens{F}) &= \overbrace{det(\tens{R})}^{=1} \cdot det(\tens{U}) \\
+&= det(\tens{U}) \\
+&= \lambda_1 \lambda_2 \lambda_3 = 1\\
+\end{align*}
+Soit : $\lambda_3 = \FRAC{1}{\lambda_2 \lambda_1}$ or localement, les $\lambda_i$ sont des constantes donc, par bijections de la fonctions $x \mapsto x^\alpha$, on peut exprimer $\lambda_2$ en fonction de $\lambda_1 = \lambda$ soit : $\lambda_2 = \lambda^\alpha$.
 
-
-
+On a donc : $\tens{U} = \lambda \uline{e'_1} \otimes \uline{e'_1} + \lambda^\alpha \uline{e'_2} \otimes \uline{e'_2} + \FRAC{1}{\lambda \lambda^\alpha} \uline{e'_3} \otimes \uline{e'_3}$
+De plus : pourquoi lambda>1
+$\tens{R}$ étant la rotation qui transforme la base $e'$ en $e''$, on a bien :
+\begin{equation}
+\fbox{
+$
+\tens{F} = \lambda \uline{e''_1} \otimes \uline{e'_1} + \lambda^\alpha \uline{e''_2} \otimes \uline{e'_2} + \lambda^{-(\alpha +1)} \uline{e''_3} \otimes \uline{e'_3}
+$
+}
+\end{equation}
+On a : $\tens{C} = \trans{\tens{F}} \tens{F} = \trans{\tens{U}} \tens{U}$ car $\tens{R}$ est une rotation.
+Par un calcul simple, on obtient : 
+\begin{align*}
+I_1 &= \lambda^2 + \lambda^{2 \alpha} + \lambda^{-(\alpha +1)} \\
+I_2 &= -\lambda^2 - \lambda^{2 (\alpha+1)} - \lambda^{ -2 \alpha} \\
+\end{align*}
 
 %appendice éventuel
 %\clearpage
