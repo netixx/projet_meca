@@ -14,7 +14,7 @@
 \usepackage{ulem}
 %\usepackage{lastpage}
 %pour les images
-	%\usepackage[dvips, pdftex]{graphicx}
+	\usepackage[dvips, pdftex]{graphicx}
 	%\usepackage[section]{placeins}
 	%\usepackage{here}
 	%\usepackage{float}
@@ -363,9 +363,19 @@ $
 On a : $\tens{C} = \trans{\tens{F}} \tens{F} = \trans{\tens{U}} \tens{U}$ car $\tens{R}$ est une rotation.
 Par un calcul simple, on obtient : 
 \begin{align*}
-I_1 &= \lambda^2 + \lambda^{2 \alpha} + \lambda^{-(\alpha +1)} \\
-I_2 &= -\lambda^2 - \lambda^{2 (\alpha+1)} - \lambda^{ -2 \alpha} \\
+I_1 &= \lambda^2 + \lambda^{2 \alpha} + \lambda^{- 2 (\alpha +1)} \\
+I_2 &= \lambda^-2 + \lambda^{2 (\alpha+1)} + \lambda^{ -2 \alpha} \\
 \end{align*}
+
+\begin{figure}[!ht]
+\centering\includegraphics[scale=0.5]{scilab/q5-1.eps}
+\label{fig:5.1}
+\end{figure}
+
+D'après cette figure, le domaine atteignable est l'ensemble des points entre la courbe rouge et la courbe bleu ciel.
+
+\subsection{}
+
 
 %appendice éventuel
 %\clearpage
