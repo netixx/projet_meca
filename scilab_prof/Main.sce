@@ -1,5 +1,5 @@
 //*****************************************************************************
-// Figure 1: Confrontation des modèles (Ta=Charge additionnelle=0)
+// Figure 1: Confrontation des modÃ¨les (Ta=Charge additionnelle=0)
 // ========
 //  - (DP(lambda), lambda)
 //  - (mu(lambda), lambda)
@@ -13,9 +13,9 @@
 //
 // Modeles de comportement: 
 // ************************
-// + Neo-Hookeen='NH', Gent='Gent', Langevin='Langevin'  (indépendant de I2)
+// + Neo-Hookeen='NH', Gent='Gent', Langevin='Langevin'  (indÃ©pendant de I2)
 // + AddI2 = 1 
-//   La dependance en I2 est à définir dans LoisComportement.sce
+//   La dependance en I2 est Ã  dÃ©finir dans LoisComportement.sce
 // + AddI2 = 0 == > dW/dI2 = 0
 //*****************************************************************************
 clear all;
