@@ -19,7 +19,7 @@
 // + AddI2 = 0 == > dW/dI2 = 0
 //*****************************************************************************
 clear all;
-exec LoisComportement.sce;  
+exec('LoisComportement.sce');  
 exec ballon_a_sculpter.sce;
 NomLoi = ['NH', 'Gent', 'Langevin']; NbLoi = size(NomLoi,"c");
 
