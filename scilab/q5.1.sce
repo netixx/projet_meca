@@ -2,7 +2,7 @@ clf();
 clear I1
 clear I2
 //print(%io(2), "coucou")
-lambdamax = 10;
+lambdamax = 5;
 lambda = 1.1:0.01:lambdamax;
 //print(%io(2), lambda);
 
