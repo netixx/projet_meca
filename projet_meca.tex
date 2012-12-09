@@ -36,7 +36,7 @@
 	%fomattage de l'entête et du pied de page
 	\usepackage{fancyhdr}
 		\setlength{\headheight}{15.2pt}
-		\lhead{\titleinfo}
+		\lhead{\titleinfo \\ }
 		\rhead{\leftmark}
 	\pagestyle{fancy}
 
@@ -82,6 +82,7 @@
 
 % Pour créer des afterpage près des larges images
 \usepackage{afterpage}
+\setlength\fboxrule{0.6pt}% pour donner plus d'importance a la boite qui entoure resultat final
 
 \begin{document}
 
@@ -209,7 +210,7 @@ $\beta$ est liée a $\delta$ de la façon suivante :
 Comme $\delta \ll 1$ on peut prendre $\beta=\lambda$ et on trouve (en injectant dans \ref{eq:exp_tenseur_compliquee})
 
 $$
-\underline{\underline{F}} = \frac{1}{\lambda\mu}\underline{e}_r\otimes\underline{e}_R+\lambda\underline{e}_\theta\otimes\underline{e}_\Theta+\mu\underline{e}_z\otimes\underline{e}_Z $$
+\uline{\uline{F}} = \frac{1}{\lambda\mu}\uline{e}_r\otimes\uline{e}_R+\lambda\uline{e}_\theta\otimes\uline{e}_\Theta+\mu\uline{e}_z\otimes\uline{e}_Z $$
 En effet,
 $\left(R \FRAC{d\beta(R)}{dR} + \beta(R)\right)\cdot \beta(R) \cdot \mu = 1$ d'où :
 $$
@@ -223,9 +224,9 @@ $$
 
 \subsection{Les invariants de la transformation}
 On fait le calcul directement:
-$$I_1=\text{tr}\left(\underline{\underline{B}}\right) = \text{tr}\left(\underline{\underline{F}}\cdot{}^{t}\underline{\underline{F}}\right) = \text{tr}\left(\frac{1}{\lambda^2\mu^2}\underline{e}_R\otimes\underline{e}_R + \lambda^2\underline{e}_\Theta\otimes\underline{e}_\Theta + \mu^2\underline{e}_Z\otimes\underline{e}_Z \right)=\fbox{$\left(\FRAC{1}{\lambda\mu}\right)^2+\lambda^2+\mu^2 = I_1$}$$
+$$I_1=\text{tr}\left(\uline{\uline{B}}\right) = \text{tr}\left(\uline{\uline{F}}\cdot{}^{t}\uline{\uline{F}}\right) = \text{tr}\left(\frac{1}{\lambda^2\mu^2}\uline{e}_R\otimes\uline{e}_R + \lambda^2\uline{e}_\Theta\otimes\uline{e}_\Theta + \mu^2\uline{e}_Z\otimes\uline{e}_Z \right)=\fbox{$\left(\FRAC{1}{\lambda\mu}\right)^2+\lambda^2+\mu^2 = I_1$}$$
 
-$$I_2 = \frac{1}{2}\left(I_1^2+\text{tr}\left(\underline{\underline{B}}\cdot\underline{\underline{B}}\right)\right) = \frac{1}{2}\left(I_1^2+\text{tr}\left( \frac{1}{\lambda^4\mu^4}\underline{e}_R\otimes\underline{e}_R + \lambda^4\underline{e}_\Theta\otimes\underline{e}_\Theta + \mu^4\underline{e}_Z\otimes\underline{e}_Z \right)\right)  = \fbox{$\FRAC{1}{\mu^2}+\frac{1}{\lambda^2}+\lambda^2\mu^2 = I_2$}$$
+$$I_2 = \frac{1}{2}\left(I_1^2+\text{tr}\left(\uline{\uline{B}}\cdot\uline{\uline{B}}\right)\right) = \frac{1}{2}\left(I_1^2+\text{tr}\left( \frac{1}{\lambda^4\mu^4}\uline{e}_R\otimes\uline{e}_R + \lambda^4\uline{e}_\Theta\otimes\uline{e}_\Theta + \mu^4\uline{e}_Z\otimes\uline{e}_Z \right)\right)  = \fbox{$\FRAC{1}{\mu^2}+\frac{1}{\lambda^2}+\lambda^2\mu^2 = I_2$}$$
 
 
 \subsection{Calcul de la contrainte de Cauchy}
@@ -305,27 +306,112 @@ L'intérêt de tirer sur le ballon permet de changer le comportement décrit au 
 \hspace{0.8cm}Cette action à pour effet de garder $\lambda$ proche de 1 lors du gonflement puisque l'air ajouté est réparti en longueur dans le ballon (par le biais de $\mu$), le différentiel de pression à appliquer reste donc faible et le différentiel de pression reste petit, le ballon est donc plus facile à gonfler. On change ainsi le comportement "naturel" du ballon en tirant sur ces fibres de façon orthogonale à la force qu'applique le différentiel de pression sur la partie gonflée du ballon, et ce nouveau comportement rend le gonflement plus facile.
 \end{enumerate}
 
+\clearpage
 
 %partie 2
 \section{Analyse des essais de Treloar}
-\subsection{Hyposhèses et loi de comportement}
-Pour un matériau élastique isotrope, on peut supposer que la loi de comportement est totalement caractérisée par la donnée de son énergie libre en fonction des invariants $I_1= tr(\uuline{C})$ et $I_2=\frac{1}{2}({I_1}^2-\uuline{C}:\uuline{C})$ avec $\uuline{C} = 2\uuline{e}+1$ où \uuline{e} est le tenseur des déformations de Green Lagrange.
+\subsection{Hypothèses et loi de comportement}
+
+Il faut verifier les conditions suivants:
+
+\begin{itemize}
+	\item[$\bullet$] Materiau elastique isotrope (ce qui donne une dependance de $I_1$, $I_2$, $I_3$ et $T$ gr\^ace \`a l'énergie libre, qui a une forme $\displaystyle\psi(\uline{X},T,I_1,I_2,I_3)$)
+	\item[$\bullet$]Mat\'eriau homog\`ene (la loi ne depend pas du point $\uline{X}$)
+	\item[$\bullet$] Isochorie ($I_3 =J^2=1$)
+	\item[$\bullet$] Temperature constante
+	
+\end{itemize}
+Avec ces hypothèses l'énergie libre, qui caracterise la loi de comportement d'un mat\'eriau elastique, est écrit $\psi(I_1,I_2)$
 
 \subsection{Calcul du tenseur gradient de la transformation $\uuline{F}$}
-Le matériau est incompressible donc $det(\uuline{F})=1$ or $\uuline{F}=\sum_{i} \lambda_i \uline{e_i}\otimes \uline{e_i}$ d'où $\lambda_1\lambda_2\lambda_3=1$ donc $\lambda_3=\frac{1}{\lambda_2\lambda_3} $.
+Le matériau est incompressible donc $det(\uuline{F})=1$ or $\uuline{F}=\sum_{i} \lambda_i \uline{e_i}\otimes \uline{e_i}$ d'où $\lambda_1\lambda_2\lambda_3=1$ donc $$\fbox{$\lambda_3=\dfrac{1}{\lambda_2\lambda_1} $}$$
 
 \subsection{Calcul des invariants $I_1$ et $I_2$}
 $$\uline{C}=^t\uuline{F}.\uuline{F}=\sum_{i} \lambda_i ^2\uline{e_i}\otimes \uline{e_i}$$
-$$I_1= tr(\uuline(C))=\lambda_1^2+\lambda_2^2+\lambda_3^2$$
-$$I_2=\frac{1}{2}(I_1^2 - tr(\uuline{C}.\uuline{C})) =\frac{1}{2}(2\lambda_1^2\lambda_2^2+2\lambda_2^2\lambda_3^2+2\lambda_1^2\lambda_3^2) =\lambda_1^2\lambda_2^2+\lambda_2^2\lambda_3^2+\lambda_1^2\lambda_3^2  $$
+$$I_1= tr(\uuline{C})=\lambda_1^2+\lambda_2^2+\lambda_3^2=\fbox{$\lambda_1^2+\lambda_2^2+\dfrac{1}{\lambda_2^2\lambda_1^2}=I_1$}$$
+$$I_2=\frac{1}{2}(I_1^2 - tr(\uuline{C}.\uuline{C})) =\frac{1}{2}(2\lambda_1^2\lambda_2^2+2\lambda_2^2\lambda_3^2+2\lambda_1^2\lambda_3^2) =\lambda_1^2\lambda_2^2+\lambda_2^2\lambda_3^2+\lambda_1^2\lambda_3^2 =\fbox{$\lambda_1^2\lambda_2^2+\dfrac{1}{\lambda_1^2}+\dfrac{1}{\lambda_2^2}=I_2$}$$
 
 \subsection{Calcul des tenseurs de contraintes de Piola $\uuline{S}$ et de Cauchy $\uuline{\sigma}$}
-$$ \uuline{S} = \rho_0 \frac{\partial \psi}{\partial \uuline{e}} + \eta\frac{\partial \phi}{\partial \uuline{e}} $$ où $\phi= det(\uuline{C})-1 $
-or $\uuline{e}=\frac{1}{2}(\uuline{C}-\mathds{1})$ d'où $\frac{\partial \psi}{\partial \uuline{e}} =2 \frac{\partial \psi}{\partial \uuline{C}} = 2 \frac{\partial tr(\uuline(C))}{\partial \uuline{C}} = 2 \mathds{1}$
-et $\frac{\partial \phi}{\partial \uuline{e}} = 2 \frac{\partial \phi}{\partial \uuline{C}}= 2 \frac{\partial det(\uuline{C})}{\partial \uuline{C}}= 2 det(\uuline{C}) \uuline{C}^{-1}$
+\begin{itemize}
+	\item[$\bullet$ \textbf{Calcul de} $\uuline{S}$] $$ \uuline{S} = \rho_0 \frac{\partial \psi}{\partial \uuline{e}} + \eta\frac{\partial \varphi}{\partial \uuline{e}} $$
+	
+	On a $$\frac{\partial \psi}{\partial \uuline{e}}= \frac{\partial \psi}{\partial I_1}\frac{\partial I_1}{\partial \uuline{e}}+\frac{\partial \psi}{\partial I_2}\frac{\partial I_2}{\partial \uuline{e}}$$
+ $$I_1=2\text{Tr}(\uuline{e})+3\Rightarrow \frac{\partial I_1}{\partial \uuline{e}}= 2\uuline{\mathds{1}} \quad \quad I_2=3+4\text{Tr}(\uuline{e})+2\left(\text{Tr}^2(\uuline{e})-\text{Tr}(\uuline{e}^2)\right)
+ \Rightarrow \frac{\partial I_2}{\partial \uuline{e}}= 2 I_1\uuline{\mathds{1}}-2\uuline{C}   $$
 
-$$\uuline{S} = \rho_0 \frac{\partial \psi}{\partial \uuline{e}} + \eta\frac{\partial \phi}{\partial \uuline{e}} $$
+Et 	$$\varphi=\text{det}\left(\uuline{C}\right)-1 \Rightarrow  \frac{\partial \varphi}{\partial \uuline{e}}= 2\uuline{C}^{-1}$$
 
+Donc \fbox{$\displaystyle \uuline{S} = 2\rho_0 \left[\frac{\partial \psi}{\partial I_1}\uuline{\mathds{1}}+ \frac{\partial \psi}{\partial I_2}\left(I_1\uuline{\mathds{1}}-\uuline{C}\right)\right] +2\eta\uuline{C}$}
+
+	\item[$\bullet$ \textbf{Calcul de} $\uuline{\sigma}$] D'apres la formule $\uuline{\sigma}=J^{-1}\uuline{F}.\uuline{S}.{}^t\uuline{F} $ on trouve \fbox{$\displaystyle \uuline{\sigma} = 2\rho_0 \left[\left(\frac{\partial \psi}{\partial I_1}+\frac{\partial \psi}{\partial I_2}\right)\uuline{B}-\frac{\partial \psi}{\partial I_2}\uuline{B}.\uuline{B}\right]+2\eta\uuline{\mathds{1}}  $}
+	
+
+\end{itemize}
+
+\subsection{Equilibre et contraintes nominales}
+
+On doit satisfaire les conditions suivantes:
+\begin{itemize}
+	\item[$\bullet$] $\dive{\uuline{\sigma}}=\uline{0} \Leftrightarrow \eta \text{ est une constante}$
+	\item[$\bullet$] Sur la face superiere $S_1$ on a par enonce $\displaystyle \uline{R}_1=\displaystyle \int_{S_1}\uuline{\sigma}.\uline{e}_1$ ce qui donne $\uline{R}_1=\uuline{\sigma}.\uline{e}_1\lambda_2L_0\lambda_3e_0$ et donc $\dfrac{\left\|\uline{R}_1\right\|}{L_0e_0}=\dfrac{\left\|\uuline{\sigma}.\uline{e}_1\right\|}{\lambda_1}$
+	
+	\item[$\bullet$] De la m\^eme mani\`ere sur la face laterale on trouve $\dfrac{\left\|\uline{R}_2\right\|}{H_0e_0}=\dfrac{\left\|\uuline{\sigma}.\uline{e}_2\right\|}{\lambda_2}$
+	\item[$\bullet$] $\displaystyle\sigma.\uline{e}_3=\uline{0}\Leftrightarrow \eta=-\rho\left[\dfrac{1}{\lambda_1^2\lambda_2^2}\dfrac{\partial \psi}{\partial I_1}+\left(\dfrac{1}{\lambda_1^2}+\dfrac{1}{\lambda_2^2}\right)\dfrac{\partial \psi}{\partial I_2}\right] $
+\end{itemize}
+
+En remplaçant le valeur de $\eta$ on trouve
+
+\begin{align*}
+\left| \tens{\sigma} \cdot \verseur{1} \right| &= 2 \rho_0 \lambda_1^2 \left[ \FRAC{\partial\psi}{\partial I_1} + \FRAC{\partial\psi}{\partial I_2} \left( \lambda_2^2 + \FRAC{1}{\lambda_1^2 \lambda_2^2} \right) \right] - 2 \rho_0 \left[  \FRAC{1}{\lambda_1^2 \lambda_2^2} \FRAC{\partial\psi}{\partial I_1} + \left( \FRAC{1}{\lambda_1^2} + \FRAC{1}{\lambda_2^2} \right) \FRAC{\partial\psi}{\partial I_2} \right]\\
+&=2\rho_0\left[\dfrac{\partial \psi}{\partial I_1}+\dfrac{\partial \psi}{\partial I_2}\lambda_2^2\right]\left(\lambda_1^2-\dfrac{1}{\lambda_1^2\lambda_2^2} \right)
+\end{align*}
+
+$$ \fbox{$t_1=\dfrac{\left\|\uuline{\sigma}.\uline{e}_1\right\|}{\lambda_1}= 2\dfrac{\rho_0}{\lambda_1}\left[\dfrac{\partial \psi}{\partial I_1}+\dfrac{\partial \psi}{\partial I_2}\lambda_2^2\right]\left(\lambda_1^2-\dfrac{1}{\lambda_1^2\lambda_2^2} \right)$}
+$$
+
+Et de la m\^eme mani\`ere
+
+$$ \fbox{$t_2=\dfrac{\left\|\uuline{\sigma}.\uline{e}_2\right\|}{\lambda_2}= 2\dfrac{\rho_0}{\lambda_2}\left[\dfrac{\partial \psi}{\partial I_1}+\dfrac{\partial \psi}{\partial I_2}\lambda_1^2\right]\left(\lambda_2^2-\dfrac{1}{\lambda_1^2\lambda_2^2} \right)$}
+$$
+
+\subsection{Les trois essais}
+\subsubsection{Traction simple} Nous avons $\uline{R}_2=\uline{0}$, donc $t_2=0$ et du fait que $\dfrac{\partial \psi}{\partial I_1}$ et $\dfrac{\partial \psi}{\partial I_2}$ sont positifs on obtient: $$\fbox{$\lambda_2=\dfrac{1}{\sqrt{\lambda_1}}$} \quad \fbox{$\lambda_3=\dfrac{1}{\sqrt{\lambda_1}}$} \quad \fbox{$t_1=2\dfrac{\rho_0}{\lambda_1}\left(\dfrac{\partial \psi}{\partial I_1}+\dfrac{\partial \psi}{\partial I_2}\dfrac{1}{\lambda_1} \right)\left(\lambda_1^2-\dfrac{1}{\lambda_1}\right) $}$$
+
+\subsubsection{Traction plane} $$\fbox{$\lambda_2=1$}\quad \fbox{$ \lambda_3=\dfrac{1}{\lambda_1}$}\quad\fbox{$t_1=2\dfrac{\rho_0}{\lambda_1}\left(\dfrac{\partial \psi}{\partial I_1}+\dfrac{\partial \psi}{\partial I_2} \right)\left(\lambda_1^2-\dfrac{1}{\lambda_1}\right)$}\quad\fbox{$t_2=2\rho_0\left(\dfrac{\partial \psi}{\partial I_1}+\dfrac{\partial \psi}{\partial I_2}\lambda_1^2 \right)\left(1-\dfrac{1}{\lambda_1^2}\right)$}$$
+
+\subsubsection{Traction équibiaxiale}$$\fbox{$\lambda_2=\lambda_1$}\quad \fbox{$ \lambda_3=\dfrac{1}{\lambda_1^2}$}\quad\fbox{$t_1=t_2=2\dfrac{\rho_0}{\lambda_1}\left(\dfrac{\partial \psi}{\partial I_1}+\dfrac{\partial \psi}{\partial I_2}\lambda_1^2 \right)\left(\lambda_1^2-\dfrac{1}{\lambda_1^4}\right)$}$$
+
+\newpage
+
+\subsection{Graphiques}
+\subsubsection{Traction simple}
+Dans ce cas, $I_1=\lambda_1^2+\dfrac{2}{\lambda_1}$ et $I_2=2\lambda_1+\dfrac{1}{\lambda_1^2}$ 
+	
+
+\begin{figure}[!ht]
+\centering\includegraphics[scale=0.8]{scilab/q2-6-1.eps} 
+\caption{Traction simple}
+\label{fig:tract_simple}
+\end{figure}
+
+\subsubsection{Traction plane}
+$I_1=\lambda_1^2+1+\dfrac{1}{\lambda_1^2}$ et $I_2=I_1$ 
+	
+\begin{figure}[!ht]
+\centering\includegraphics[scale=0.8]{scilab/q2-6-2.eps} 
+\caption{Traction plane}
+\label{fig:tract_plane}
+\end{figure}
+
+\newpage
+\subsubsection{Traction équibiaxiale}
+$I_1=2\lambda_1^2+\dfrac{1}{\lambda_1^4}$ et $I_2=\lambda_1^4+\dfrac{2}{\lambda_1^2}$
+	
+\begin{figure}[!ht]
+\centering\includegraphics[scale=0.8]{scilab/q2-6-3.eps} 
+\caption{Traction équibiaxiale}
+\label{fig:tract_equi}
+\end{figure}
 
 %partie 3
 \section{Identification des paramètres de lois NH et Langevin}
@@ -334,7 +420,7 @@ Dans cet exercice, on considère une loi de comportement uniquement caractéris�
 
 \subsection {Discussion sur les trois essais}
 
-Dans cette condition, les trois essais nous fournissent les moyens nécessaires pour identificer la forme de la fonction $\frac{\partial\psi}{\partial I_1} (I_1)$, lorsqu'on mésure les quantités $t_1, t_2, \lambda_1$. L'essai "traction plane" nous permet de calculer $\frac{\partial\psi}{\partial I_1}$ de deux façons indépendentes, c'est-à-dire à partir de $t_1$ ou bien de $t_2$. Toutefois, si l'on ne dispose pas de l'information sur $t_2$, les trois essais sont teoriquement équivalents, étant donné que l'on peut mésurer les quantités $\lambda_1$ et $t_1$ avec une très bonne précision.
+Dans cette condition, les trois essais nous fournissent les moyens nécessaires pour identifier la forme de la fonction $\frac{\partial\psi}{\partial I_1} (I_1)$, lorsqu'on mesure les quantités $t_1, t_2, \lambda_1$. L'essai "traction plane" nous permet de calculer $\frac{\partial\psi}{\partial I_1}$ de deux façons indépendantes, c'est-à-dire à partir de $t_1$ ou bien de $t_2$. Toutefois, si l'on ne dispose pas de l'information sur $t_2$, les trois essais sont théoriquement équivalents, étant donné que l'on peut mesurer les quantités $\lambda_1$ et $t_1$ avec une très bonne précision.
 
 \subsection {Traction Simple}
 Les équations utilisées pour calculer la quantité $\frac{\partial\psi}{\partial I_1} (I_1(\lambda_1))$ en fonction de $\lambda_1$ supposant $\psi = \psi(I_1)$ sont, d'après le dernier exercice :
@@ -365,7 +451,7 @@ La figure \ref{fig:31} contient le graphe paramétrique des relations (TS).
 
 \end{enumerate}
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=0.7\textwidth]{scilab_prof/q31.pdf}
 \caption{Graphe de $2 \rho_0 \frac{\partial\psi}{\partial I_1}$ en fonction de $I_1$ pour l'essai de Traction simple. La courbe bleue répresente la fonction de Langevin avec les paramètres optimaux trouvés dans la question 3 : $C_L = 0.9573543$ et $N_L=26.947726$.}
@@ -379,7 +465,7 @@ La figure \ref{fig:31} nous indique que les fonctions $\psi$ ont une forte dépe
 
 On voit dans la figure \ref{fig:32} que la loi de Langevin décrit bien les essais TS et TP. Cependent, l'essai TEB s'écarte des deux autres courbes. On observe que, dans les équations décrivant $t_1$ dans la question 2.6, pour grandes valeurs de $\lambda_1$, on néglige de plus en plus la dépendence de $\psi$ par rapport à $I_2$ dans l'essai TS. Dans l'essai TP, la valeur de $\frac{\partial\psi}{\partial I_2}$ est déjà pris en compte dans le calcul de $\frac{\partial\psi}{\partial I_1}$. En plus, dans cet essai $I_1 = I_2$. Par contre, dans l'essai TEB, l'écart entre $\frac{\partial\psi}{\partial I_2}$ et $\frac{\partial\psi}{\partial I_1}$ croît avec $\lambda_1^2$, ce qui explique sa courbe dans la figure \ref{fig:32}.
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=0.7\textwidth]{scilab_prof/q32.pdf}
 \caption{Graphe de $2 \rho_0 \frac{\partial\psi}{\partial I_1}$ en fonction de $I_1$ pour tous les essais. La courbe bleue répresente la fonction de Langevin avec les paramètres optimaux trouvés dans la question 3 : $C_L = 0.9573543$ et $N_L=26.947726$.}
@@ -388,11 +474,11 @@ On voit dans la figure \ref{fig:32} que la loi de Langevin décrit bien les essa
 
 % partie 4
 \section{Développement d'une loi à deux invariants}
-Désormais on rajoute un deuxième terme à la loi de Langevin décrite ci-dessus : $\psi(\tens{e}) = \psi_1(I_1) + \psi_2(I_2)$, avec $\frac{\partial\psi}{\partial I_1} = C_L\frac{9N_L-I_1}{3N_L-I_1}$, où les constantes sont celles de la figure \ref{fig:32}. Il s'agit encore d'une simplification, car on néglige quand même les termes croisés $I_1I_2$ ou supérieurs.
+Désormais on rajoute un deuxième terme à la loi de Langevin décrite ci-dessus : $\psi(\tens{e}) = \psi_1(I_1) + \psi_2(I_2)$, avec $\FRAC{\partial\psi}{\partial I_1} = C_L\frac{9N_L-I_1}{3N_L-I_1}$, où les constantes sont celles de la figure \ref{fig:32}. Il s'agit encore d'une simplification, car on néglige quand même les termes croisés $I_1I_2$ ou supérieurs.
 
 \subsection{Dépendence du modèle en deuxième invariant}
 On isole $2 \rho_0 \frac{\partial\psi}{\partial I_2}$ dans les équations de la question 2.6 en fonction de $t_1$ et $\lambda_1$. Le résultat est tracé dans les figures \ref{fig:411} à \ref{fig:413}.
-\begin{figure}[ht]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=0.7\textwidth]{scilab_prof/q411.pdf}
 \caption{Graphe de $2 \rho_0 \frac{\partial\psi}{\partial I_2}$ en fonction de $I_2$ pour l'essai de Traction simple. La courbe bleue répresente la regression non-linéaire des données par rapport à une fonction de la forme $A/(I_2-B)$ : $A = 8.3711453, B = -2.1941321$.}
