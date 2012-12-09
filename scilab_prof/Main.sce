@@ -29,7 +29,7 @@ Epais = 1/30; A=1.;  // Geometrie (rapport E/A) et A
 Ta    = [0:3:15];    // Charge axiale additionnelle 
 
 // Domaine d'evolution de Lambda
-lambda = [0.4:0.1:6.5];
+lambda = [0.4:0.1:7];
 
 // Resolution
 [DP,Mu,Vol,I1,I2]=SolveBallon(lambda, Ta, Epais, A, AddI2);

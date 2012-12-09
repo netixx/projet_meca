@@ -84,8 +84,8 @@
 \usepackage{afterpage}
 \setlength\fboxrule{0.6pt}% pour donner plus d'importance a la boite qui entoure resultat final
 
-\begin{document}
 
+\begin{document}
 \title{\titleinfo}
 \author{
 	François \bsc{Espinet}
@@ -459,7 +459,7 @@ La figure \ref{fig:31} nous indique que les fonctions $\psi$ ont une forte dépe
 
 \subsection{TP et TEB - simple dépendence en premier invariant}
 
-On voit dans la figure \ref{fig:32} que la loi de Langevin décrit bien les essais TS et TP. Cependant, l'essai TEB s'écarte des deux autres courbes. On observe que, dans les équations décrivant $t_1$ dans la question 2.6, pour grandes valeurs de $\lambda_1$, on néglige de plus en plus la dépendence de $\psi$ par rapport à $I_2$ dans l'essai TS. Dans l'essai TP, la valeur de $\frac{\partial\psi}{\partial I_2}$ est déjà pris en compte dans le calcul de $\frac{\partial\psi}{\partial I_1}$. En plus, dans cet essai $I_1 = I_2$. Par contre, dans l'essai TEB, l'écart entre $\frac{\partial\psi}{\partial I_2}$ et $\frac{\partial\psi}{\partial I_1}$ croît avec $\lambda_1^2$, ce qui explique sa courbe dans la figure \ref{fig:32}.
+On voit dans la figure \ref{fig:32} que la loi de Langevin décrit bien les essais TS et TP. Cependant, l'essai TEB s'écarte des deux autres courbes. On observe que, dans les équations décrivant $t_1$ dans la question 2.6, pour les grandes valeurs de $\lambda_1$, on néglige de plus en plus la dépendence de $\psi$ par rapport à $I_2$ dans l'essai TS. Dans l'essai TP, la valeur de $\frac{\partial\psi}{\partial I_2}$ est déjà pris en compte dans le calcul de $\frac{\partial\psi}{\partial I_1}$. En plus, dans cet essai $I_1 = I_2$. Par contre, dans l'essai TEB, l'écart entre $\frac{\partial\psi}{\partial I_2}$ et $\frac{\partial\psi}{\partial I_1}$ croît avec $\lambda_1^2$, ce qui explique sa courbe dans la figure \ref{fig:32}.
 
 \begin{figure}[!ht]
 \centering
@@ -594,12 +594,69 @@ On couvre donc l'ensemble des valeurs possibles. Cependant, il manque une ou deu
 
 \subsection{Résolution pour les trois lois trouvées}
 En résolvant le système avec les paramètres optimisés et la loi optimisée trouvées à la partie 3 et 4 on obtient les solutions suivantes: 
-\begin{figure}[!ht]
-\centering\includegraphics[scale=0.75]{scilab/q531.eps}
+\begin{figure}[!h]
+\centering\includegraphics[scale=0.72]{scilab/q531.eps}
 \end{figure}
-\begin{figure}[!ht]
-\centering\includegraphics[scale=0.75]{scilab/q532.eps}
+\begin{figure}[!h]
+\centering\includegraphics[scale=0.72]{scilab/q532.eps}
 \end{figure}
+\FloatBarrier
+\clearpage
+
+Points remarquables de la courbe $\Delta_p(\lambda)$ : 
+\begin{itemize}
+	\item[Loi NH]
+	\begin{enumerate}
+	\item $\lambda = 1.6$ maximum local, $\Delta_p = 0.118$, en bleu
+	\end{enumerate}
+	\item[Loi Langevin]
+	\begin{enumerate}
+	\item $\lambda = 1.6$ maximum local, $\Delta_p = 0.039$
+	\item $\lambda = 3.7$ minimum local, $\Delta_p = 0.027$, en violet
+	\end{enumerate}
+	\item[Loi Langevin Enrichie]
+	\begin{enumerate}
+	\item $\lambda = 1.6$ maximum local, $\Delta_p = 0.075$
+	\item $\lambda = 4.7$ minimum local, $\Delta_p = 0.042$, en rouge
+	\end{enumerate}
+\end{itemize}
+\begin{figure}[!h]
+\centering\includegraphics[scale=1.2]{scilab/q533.png}
+\end{figure}
+\FloatBarrier
+
+
+
+\subsection{Cas $T_a$ non-nul}
+On observe un décalage des points vers la droite et vers le haut : $\lambda$ et $\Delta_p$ plus grands.
+
+\subsection{Conclusion}
+Par l'utilisation des paramètres identifiés : 
+\begin{itemize}
+\item Les valeurs de lambda n'ont pas changés
+\item La valeur de $\Delta_p$ pour la loi NH à augmenté alors que celle pour la loi de Langevin est restée la même
+\item On observe la même chose sur les courbes $\Delta_p(V/V_ini)$
+\end{itemize}
+
+Lorsque $T_a$ est non-nul, on observe un resserrement des courbes pour la loi NH mais pas pour la loi de Langevin.
+Avec ces nouveaux coefficients, l'effet de la traction sur la facilité du gonflage devient moindre en considérant les lois de Langevin améliorée et la loi NH. L'absence de changements pour la loi de Langevin est du au fait que la constante choisie est proche de celle proposée à la partie 1.
+
+Comme dans la partie 1, on voit que la loi NH ne diverge pas pour des gonflements importants. Cela pose le problème déjà évoqué dans la première partie.
+La loi de Langevin prévoit une divergence du différentiel de pression pour $\lambda=6$ alors que la loi enrichie prévoit une divergence en $\lambda=7$. Cependant, la loi enrichie permet d'expliquer la phase ou le gonflage du ballon est facile puisque la courbe est fortement décroissante après $\lambda \approx 2$.
+
+Par le même raisonnement que dans la partie 1, on déduit que la loi enrichie met en avant le fait que tirer sur le ballon facilite le gonflage. En effet, les valeurs de $\mu$ pour $\lambda = 1$ sont plus faibles, le gonflage est donc plus dur relativement aux prévisions de la loi de Langevin.
+
+Pour le départ du gonflage : la loi NH et Langevin enrichie prévoient bien une forte difficulté du gonflage alors que la loi de Langevin ne le prévoit pas (3 fois moins de difficulté que la loi NH par exemple).
+Pour la suite, ou le gonflage est plus facile, la loi NH et Langevin enrichie prévoient toutes deux la facilité observée.
+Enfin, lorsque le ballon commence à être très gonflé, les lois Langevin et Langevin enrichie prévoient toutes deux la divergence du différentiel de pression ce qui correspond mieux à la réalité.
+En conclusion, on peut faire confiance à la loi de Langevin enrichie sur tout le domaine. La loi NH est valable pour les petites déformations et la loi Langevin pour les déformations plus grandes.
+
+Les sollicitation pour les essais en traction simple, plane et équibiaxiale sont respectivement de 8, 5 et 4.5 or on a représenté les courbes de gonflage pour $\lambda \in [1, 7]$. Cependant, la traction simple la régression linéaire n'a pas donnée de résultat satisfaisant et donc doit être écarté. De fait, on doit se limiter à $\lambda = 5$, d'où les courbes représentées sont surement très approximatives pour des valeurs de $\lambda$ supérieures à 6.
+
+On pourrait proposer un essai de traction qui respect la géométrie du problème. En effet, on peut imaginer un test semblable au test de traction équibiaxiale mais en géométrie cylindrique : un anneau attaché au ballon qui changerait de diamètre.
+
+
+
 
 %appendice éventuel
 %\clearpage
