@@ -141,7 +141,7 @@ Comparaison de cette transformation à la structure après transformation:
 \item Pour tout point $M(0, \Theta, Z)$ de l'axe $(0z)$, $\phi(M) = m(0, \theta, \mu Z)$ : $m$ appartient à $(Oz)$ donc l'axe $(Oz)$ reste fixe.
 \item $\phi (0, 0, 0) = (0, 0, 0)$ donc l'origine $O(0, 0, 0)$ reste fixe.
 \item Pour tout point $M(R, \Theta, H)$,  $\phi(M) = m(\beta (R) R, \Theta, \mu H)$ Ainsi le cylindre a une longueur $\mu H$ après transformation.
-\item Pour tout point $M(A, \Theta, Z)$ de la paroi interne du cylindre, $\phi(M) = m(\beta(A) A, \theta, \mu Z)$ or la paroi interne après transformation a pour rayon $\lambda A$ d'où
+\item Pour tout point $M(A, \Theta, Z)$ de la paroi interne du cylindre, $\phi(M) = m(\beta(A) A, \theta, \mu Z)$ or la paroi interne après transformation a pour rayon $\lambda A$ d'où 
 \begin{equation}
 \beta(A) = \lambda
 \label{eq:condition_limite_beta}
@@ -207,10 +207,10 @@ Comme $\delta \ll 1$ on peut prendre $\beta=\lambda$ et on trouve (en injectant 
 
 $$
 \underline{\underline{F}} = \frac{1}{\lambda\mu}\underline{e}_r\otimes\underline{e}_R+\lambda\underline{e}_\theta\otimes\underline{e}_\Theta+\mu\underline{e}_z\otimes\underline{e}_Z $$
-En effet,
-$\left(R \FRAC{d\beta(R)}{dR} + \beta(R)\right)\cdot \beta(R) \cdot \mu = 1$ d'où :
+En effet, 
+$\left(R \FRAC{d\beta(R)}{dR} + \beta(R)\right)\cdot \beta(R) \cdot \mu = 1$ d'où : 
 $$
-\left(R \frac{d\beta(R)}{dR} + \beta(R)\right) = \frac{1}{\beta(R) \mu} = \frac{1}{\lambda \mu}
+\left(R \frac{d\beta(R)}{dR} + \beta(R)\right) = \frac{1}{\beta(R) \mu} = \frac{1}{\lambda \mu} 
 $$
 Ce qui donne :
 
@@ -219,7 +219,7 @@ $$
 
 
 \subsection{Les invariants de la transformation}
-On fait le calcul directement:
+On fait le calcul directement: 
 $$I_1=\text{tr}\left(\underline{\underline{B}}\right) = \text{tr}\left(\underline{\underline{F}}\cdot{}^{t}\underline{\underline{F}}\right) = \text{tr}\left(\frac{1}{\lambda^2\mu^2}\underline{e}_R\otimes\underline{e}_R + \lambda^2\underline{e}_\Theta\otimes\underline{e}_\Theta + \mu^2\underline{e}_Z\otimes\underline{e}_Z \right)=\fbox{$\left(\FRAC{1}{\lambda\mu}\right)^2+\lambda^2+\mu^2 = I_1$}$$
 
 $$I_2 = \frac{1}{2}\left(I_1^2+\text{tr}\left(\underline{\underline{B}}\cdot\underline{\underline{B}}\right)\right) = \frac{1}{2}\left(I_1^2+\text{tr}\left( \frac{1}{\lambda^4\mu^4}\underline{e}_R\otimes\underline{e}_R + \lambda^4\underline{e}_\Theta\otimes\underline{e}_\Theta + \mu^4\underline{e}_Z\otimes\underline{e}_Z \right)\right)  = \fbox{$\FRAC{1}{\mu^2}+\frac{1}{\lambda^2}+\lambda^2\mu^2 = I_2$}$$
@@ -255,9 +255,7 @@ $$\sigma_{\theta\theta} = \frac{a\Delta p}{e} - p_e \approx  \frac{a\Delta p}{e}
 
 Remarque : Le fait que $\sigma_{rr}$ soit de l'ordre de $p_i$ ou $p_e$ et que l'on ait trouvé $\sigma_{\theta\theta} \gg p_e$ confirme notre supposition précédente, i.e. $\sigma_{rr} \ll \sigma_{\theta\theta}$.
 
-Les conditions aux bords $z=0$ ($S_0$) et $z=H$ ($S_H$), avec l'hypothèse $\sigma_{zz} = \mathrm{cte}$, nous donnent directement la relation $T \approx 2\pi a e \cdot \sigma_{zz}$. Prenons maintenant l'enveloppe du sous-système à droite directement connecté au sous-système défini ci-dessus. Or, il s'agit d'une surface fermé sauf pour un cercle de rayon $a$ et une différence de pression $\Delta p$ entre le volume à l'intérieur et à l'extérieur. Le Théorème d'Euler est donc valide et l'équilibre des forces nous fournit la relation suivante pour l'effort d'équilibre:
-
-$$T = \pi a^2 p_i - \pi (a+e)^2 p_e \approx \pi a^2 \Delta p$$
+Les conditions aux bords $z=0$ ($S_0$) et $z=H$ ($S_H$), avec l'hypothèse $\sigma_{zz} = \mathrm{cte}$, nous donnent directement la relation $T \approx 2\pi a e \cdot \sigma_{zz}$. Avec la contrainte $\sigma_{\theta\theta} \approx \frac{a\Delta p}{e}$ , le jeux de variables indéfinies du problème $(\mu, \lambda)$ diminue de dimension, si on n'impose pas de valeur à $T$. En considérant le cercle de Mohr et les conditions limites de rupture, il est raisonnable de dire que le système admettrait une solution qui minimise l'écart entre $\sigma_{\theta\theta}$ et $\sigma_{zz}$. Cela se passe quand $\mu \approx \lambda$, d'après les équations dans la question 1.6. Cela implique que l'effort d'équilibre vaudrait $T \approx \pi ae \cdot \frac{a\Delta p}{e} = \pi a^2 \Delta p$.
 
 On note $T = T_{\Delta p} + T_a = \pi a^2 \Delta p + T_a$ et on introduit les résultats trouvés ci-dessus dans le système d'équations de la question précédente.
 
@@ -304,19 +302,21 @@ L'intérêt de tirer sur le ballon permet de changer le comportement décrit au 
 \hspace{0.8cm}Cette action à pour effet de garder $\lambda$ proche de 1 lors du gonflement puisque l'air ajouté est réparti en longueur dans le ballon (par le biais de $\mu$), le différentiel de pression à appliquer reste donc faible et le différentiel de pression reste petit, le ballon est donc plus facile à gonfler. On change ainsi le comportement "naturel" du ballon en tirant sur ces fibres de façon orthogonale à la force qu'applique le différentiel de pression sur la partie gonflée du ballon, et ce nouveau comportement rend le gonflement plus facile.
 \end{enumerate}
 
+
+%partie 2
 \section{Analyse des essais de Treloar}
 \subsection{Hyposhèses et loi de comportement}
 Pour un matériau élastique isotrope, on peut supposer que la loi de comportement est totalement caractérisée par la donnée de son énergie libre en fonction des invariants $I_1= tr(\uuline{C})$ et $I_2=\frac{1}{2}({I_1}^2-\uuline{C}:\uuline{C})$ avec $\uuline{C} = 2\uuline{e}+1$ où \uuline{e} est le tenseur des déformations de Green Lagrange.
 
-\subsection*{Calcul du tenseur gradient de la transformation $\uuline{F}$}
+\subsection{Calcul du tenseur gradient de la transformation $\uuline{F}$}
 Le matériau est incompressible donc $det(\uuline{F})=1$ or $\uuline{F}=\sum_{i} \lambda_i \uline{e_i}\otimes \uline{e_i}$ d'où $\lambda_1\lambda_2\lambda_3=1$ donc $\lambda_3=\frac{1}{\lambda_2\lambda_3} $.
 
-\subsection*{Calcul des invariants $I_1$ et $I_2$}
+\subsection{Calcul des invariants $I_1$ et $I_2$}
 $$\uline{C}=^t\uuline{F}.\uuline{F}=\sum_{i} \lambda_i ^2\uline{e_i}\otimes \uline{e_i}$$
 $$I_1= tr(\uuline(C))=\lambda_1^2+\lambda_2^2+\lambda_3^2$$
 $$I_2=\frac{1}{2}(I_1^2 - tr(\uuline{C}.\uuline{C})) =\frac{1}{2}(2\lambda_1^2\lambda_2^2+2\lambda_2^2\lambda_3^2+2\lambda_1^2\lambda_3^2) =\lambda_1^2\lambda_2^2+\lambda_2^2\lambda_3^2+\lambda_1^2\lambda_3^2  $$
 
-\subsection*{Calcul des tenseurs de contraintes de Piola $\uuline{S}$ et de Cauchy $\uuline{\sigma}$}
+\subsection{Calcul des tenseurs de contraintes de Piola $\uuline{S}$ et de Cauchy $\uuline{\sigma}$}
 $$ \uuline{S} = \rho_0 \frac{\partial \psi}{\partial \uuline{e}} + \eta\frac{\partial \phi}{\partial \uuline{e}} $$ où $\phi= det(\uuline{C})-1 $
 or $\uuline{e}=\frac{1}{2}(\uuline{C}-\mathds{1})$ d'où $\frac{\partial \psi}{\partial \uuline{e}} =2 \frac{\partial \psi}{\partial \uuline{C}} = 2 \frac{\partial tr(\uuline(C))}{\partial \uuline{C}} = 2 \mathds{1}$
 et $\frac{\partial \phi}{\partial \uuline{e}} = 2 \frac{\partial \phi}{\partial \uuline{C}}= 2 \frac{\partial det(\uuline{C})}{\partial \uuline{C}}= 2 det(\uuline{C}) \uuline{C}^{-1}$
@@ -324,17 +324,17 @@ et $\frac{\partial \phi}{\partial \uuline{e}} = 2 \frac{\partial \phi}{\partial 
 $$\uuline{S} = \rho_0 \frac{\partial \psi}{\partial \uuline{e}} + \eta\frac{\partial \phi}{\partial \uuline{e}} $$
 
 
-
+%partie 3
 \section{Identification des paramètres de lois NH et Langevin}
 
 
 
-
+%partie 4
 \section{Développement d'une loi à deux invariants}
 
 
 
-
+%partie 5
 \section{Discussion}
 \subsection{Décomposition d'un transformation isochore}
 Pour un matériau incompressible, on a $det(\tens{F}) = 1$.
@@ -361,7 +361,7 @@ $
 }
 \end{equation}
 On a : $\tens{C} = \trans{\tens{F}} \tens{F} = \trans{\tens{U}} \tens{U}$ car $\tens{R}$ est une rotation.
-Par un calcul simple, on obtient :
+Par un calcul simple, on obtient : 
 \begin{align*}
 I_1 &= \lambda^2 + \lambda^{2 \alpha} + \lambda^{-(\alpha +1)} \\
 I_2 &= -\lambda^2 - \lambda^{2 (\alpha+1)} - \lambda^{ -2 \alpha} \\
