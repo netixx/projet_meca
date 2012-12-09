@@ -21,7 +21,7 @@
 clear all;
 exec('LoisComportement.sce');  
 exec ballon_a_sculpter.sce;
-NomLoi = ['NH', 'Gent', 'Langevin']; NbLoi = size(NomLoi,"c");
+NomLoi = ['NH', 'Langevin', 'eLangevin']; NbLoi = size(NomLoi,"c");
 
 // Parametres
 AddI2 = 0;           // Dependance en I2 (0 pour avoir dW/dI2=0)
