@@ -22,15 +22,34 @@ end
 endfunction
 
 xset("window",1);
-xtitle("", "I", "dWdI"); xgrid;
+xtitle("Essais de Treloar", "I", "dWdI"); xgrid;
 [I1 dW] = dWdI1('TS', TS(:,1), TS(:,2));
 plot2d(I1, dW, rect = [0, 0, max(I1)*1.1, max(dW)*1.1], style = -1);
+
+disp('Regression linéaire TS');
+[I1 dW]= dWdI1('TS', TS(:,1), TS(:,2));
+C_NH=mean(dW);
+disp('C_NH = ' + string(C_NH));
+
+disp ('Regression non-linéaire TS');
+LangevinFun= 'C*(9*N-x)./(3*N-x)';
+dLangevinFun= '[(9*N-x)./(3*N-x), -6*C*x./(3*N-x).^2]';
+pDef= 'C N';
+Names= 'x y';
+deff('yhat=Langevin(p,x)', 'yhat=p(1)*(9*p(2)-x)./(3*N-x)');
+pInit = [0.5 20];
+[I1 dW]= dWdI1('TS', TS(:,1), TS(:,2));
+Data = [I1 dW];
+[phat, yhat, stat]=nlinregr(Data, Names, LangevinFun, dLangevinFun, pDef, 'y', 1, pInit);
+disp ('Paramètres trouvés:');
+C = phat(1); N = phat(2);
+disp ('C_L = ' + string(C) + ', N_L = ' + string(N));
+I1 = 1:0.1:60;
+dW = C .* (9*N - I1) ./ (3*N - I1);
+plot2d(I1, dW, style = 2);
+
 [I1 dW] = dWdI1('TP', TP(:,1), TP(:,2));
-plot2d(I1, dW, rect = [0, 0, max(I1)*1.1, max(dW)*1.1], style = -2);
+plot2d(I1, dW, rect = [0, 0, max(I1)*1.1, max(dW)*1.1], style = -9);
 [I1 dW] = dWdI1('TEB', TEB(:,1), TEB(:,2));
 plot2d(I1, dW, rect = [0, 0, max(I1)*1.1, max(dW)*1.1], style = -5);
-
-C = 0.84; N = 76.0/3;
-I1 = 1:0.1:60;
-dW = C .* (9*N - I1) ./ (3*N - I1)
-plot2d(I1, dW, style = 2);
+legends(['TS' 'TP' 'TEB'], [-1, -9, -5], 4);

@@ -80,6 +80,9 @@
 
 \renewcommand{\theequation}{\Alph{equation}}
 
+% Pour créer des afterpage près des larges images
+\usepackage{afterpage}
+
 \begin{document}
 
 \title{\titleinfo}
@@ -141,7 +144,7 @@ Comparaison de cette transformation à la structure après transformation:
 \item Pour tout point $M(0, \Theta, Z)$ de l'axe $(0z)$, $\phi(M) = m(0, \theta, \mu Z)$ : $m$ appartient à $(Oz)$ donc l'axe $(Oz)$ reste fixe.
 \item $\phi (0, 0, 0) = (0, 0, 0)$ donc l'origine $O(0, 0, 0)$ reste fixe.
 \item Pour tout point $M(R, \Theta, H)$,  $\phi(M) = m(\beta (R) R, \Theta, \mu H)$ Ainsi le cylindre a une longueur $\mu H$ après transformation.
-\item Pour tout point $M(A, \Theta, Z)$ de la paroi interne du cylindre, $\phi(M) = m(\beta(A) A, \theta, \mu Z)$ or la paroi interne après transformation a pour rayon $\lambda A$ d'où 
+\item Pour tout point $M(A, \Theta, Z)$ de la paroi interne du cylindre, $\phi(M) = m(\beta(A) A, \theta, \mu Z)$ or la paroi interne après transformation a pour rayon $\lambda A$ d'où
 \begin{equation}
 \beta(A) = \lambda
 \label{eq:condition_limite_beta}
@@ -207,10 +210,10 @@ Comme $\delta \ll 1$ on peut prendre $\beta=\lambda$ et on trouve (en injectant 
 
 $$
 \underline{\underline{F}} = \frac{1}{\lambda\mu}\underline{e}_r\otimes\underline{e}_R+\lambda\underline{e}_\theta\otimes\underline{e}_\Theta+\mu\underline{e}_z\otimes\underline{e}_Z $$
-En effet, 
-$\left(R \FRAC{d\beta(R)}{dR} + \beta(R)\right)\cdot \beta(R) \cdot \mu = 1$ d'où : 
+En effet,
+$\left(R \FRAC{d\beta(R)}{dR} + \beta(R)\right)\cdot \beta(R) \cdot \mu = 1$ d'où :
 $$
-\left(R \frac{d\beta(R)}{dR} + \beta(R)\right) = \frac{1}{\beta(R) \mu} = \frac{1}{\lambda \mu} 
+\left(R \frac{d\beta(R)}{dR} + \beta(R)\right) = \frac{1}{\beta(R) \mu} = \frac{1}{\lambda \mu}
 $$
 Ce qui donne :
 
@@ -219,7 +222,7 @@ $$
 
 
 \subsection{Les invariants de la transformation}
-On fait le calcul directement: 
+On fait le calcul directement:
 $$I_1=\text{tr}\left(\underline{\underline{B}}\right) = \text{tr}\left(\underline{\underline{F}}\cdot{}^{t}\underline{\underline{F}}\right) = \text{tr}\left(\frac{1}{\lambda^2\mu^2}\underline{e}_R\otimes\underline{e}_R + \lambda^2\underline{e}_\Theta\otimes\underline{e}_\Theta + \mu^2\underline{e}_Z\otimes\underline{e}_Z \right)=\fbox{$\left(\FRAC{1}{\lambda\mu}\right)^2+\lambda^2+\mu^2 = I_1$}$$
 
 $$I_2 = \frac{1}{2}\left(I_1^2+\text{tr}\left(\underline{\underline{B}}\cdot\underline{\underline{B}}\right)\right) = \frac{1}{2}\left(I_1^2+\text{tr}\left( \frac{1}{\lambda^4\mu^4}\underline{e}_R\otimes\underline{e}_R + \lambda^4\underline{e}_\Theta\otimes\underline{e}_\Theta + \mu^4\underline{e}_Z\otimes\underline{e}_Z \right)\right)  = \fbox{$\FRAC{1}{\mu^2}+\frac{1}{\lambda^2}+\lambda^2\mu^2 = I_2$}$$
@@ -327,14 +330,100 @@ $$\uuline{S} = \rho_0 \frac{\partial \psi}{\partial \uuline{e}} + \eta\frac{\par
 %partie 3
 \section{Identification des paramètres de lois NH et Langevin}
 
+Dans cet exercice, on considère une loi de comportement uniquement caractérisée par le premier invariant : $\psi = \psi(I_1)$.
 
+\subsection {Discussion sur les trois essais}
 
-%partie 4
+Dans cette condition, les trois essais nous fournissent les moyens nécessaires pour identificer la forme de la fonction $\frac{\partial\psi}{\partial I_1} (I_1)$, lorsqu'on mésure les quantités $t_1, t_2, \lambda_1$. L'essai "traction plane" nous permet de calculer $\frac{\partial\psi}{\partial I_1}$ de deux façons indépendentes, c'est-à-dire à partir de $t_1$ ou bien de $t_2$. Toutefois, si l'on ne dispose pas de l'information sur $t_2$, les trois essais sont teoriquement équivalents, étant donné que l'on peut mésurer les quantités $\lambda_1$ et $t_1$ avec une très bonne précision.
+
+\subsection {Traction Simple}
+Les équations utilisées pour calculer la quantité $\frac{\partial\psi}{\partial I_1} (I_1(\lambda_1))$ en fonction de $\lambda_1$ supposant $\psi = \psi(I_1)$ sont, d'après le dernier exercice :
+\begin{enumerate}
+\item[(TS)]
+$
+\begin{cases}
+2 \rho_0 \frac{\partial\psi}{\partial I_1} = \frac{t_1\lambda_1^2}{\lambda^3-1}\\
+I_1 = \lambda_1^2 + \frac{2}{\lambda_1}
+\end{cases}
+$
+\item[(TP)]
+$
+\begin{cases}
+2 \rho_0 \frac{\partial\psi}{\partial I_1} = \frac{t_1\lambda_1^3}{\lambda^4-1}\\
+I_1 = \lambda_1^2 + 1 + \frac{1}{\lambda_1^2}
+\end{cases}
+$
+\item[(TEB)]
+$
+\begin{cases}
+2 \rho_0 \frac{\partial\psi}{\partial I_1} = \frac{t_1\lambda_1^5}{\lambda^6-1}\\
+I_1 = 2\lambda_1^2 + \frac{1}{\lambda_1^4}
+\end{cases}
+$
+
+La figure \ref{fig:31} contient le graphe paramétrique des relations (TS).
+
+\end{enumerate}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\textwidth]{scilab_prof/q31.pdf}
+\caption{Graphe de $2 \rho_0 \frac{\partial\psi}{\partial I_1}$ en fonction de $I_1$ pour l'essai de Traction simple. La courbe bleue répresente la fonction de Langevin avec les paramètres optimaux trouvés dans la question 3 : $C_L = 0.9573543$ et $N_L=26.947726$.}
+\label{fig:31}
+\end{figure}
+
+\subsection{Lois NH et de Langevin}
+La figure \ref{fig:31} nous indique que les fonctions $\psi$ ont une forte dépendence du premier invariant, surtout quand il dépasse la valeur de $I_1 = 40$. SCILAB nous fournit les outils de regression linéaire et non-linéaire nécessaires pour trouver les paramètres optimaux $C_{NH}$, $C_L$ et $N_L$ dans la regression $2 \rho_0 \frac{\partial\psi}{\partial I_1} = C_{NH}$ (NH) ou $2 \rho_0 \frac{\partial\psi}{\partial I_1} = C_L \frac{9N_L-I_1}{3N_L-I_1}$ (Langevin) (code ci-joint). Les résultats trouvés sont $C_{NH} = 4.7342746$ et $(C_L, N_L) = (0.9573543, 26.947726)$. Évidemment, pour grandes valeurs de $I_1$, on a l'interêt d'utiliser la loi de Langevin, plus approprié qu'une constante néo-hookéenne dans le domaine d'application de grandes déformations. Pour petites valeurs de $I_1$, la constante optimale devient $C_NH \approx 3.5$.
+
+\subsection{TP et TEB - simple dépendence en premier invariant}
+
+On voit dans la figure \ref{fig:32} que la loi de Langevin décrit bien les essais TS et TP. Cependent, l'essai TEB s'écarte des deux autres courbes. On observe que, dans les équations décrivant $t_1$ dans la question 2.6, pour grandes valeurs de $\lambda_1$, on néglige de plus en plus la dépendence de $\psi$ par rapport à $I_2$ dans l'essai TS. Dans l'essai TP, la valeur de $\frac{\partial\psi}{\partial I_2}$ est déjà pris en compte dans le calcul de $\frac{\partial\psi}{\partial I_1}$. En plus, dans cet essai $I_1 = I_2$. Par contre, dans l'essai TEB, l'écart entre $\frac{\partial\psi}{\partial I_2}$ et $\frac{\partial\psi}{\partial I_1}$ croît avec $\lambda_1^2$, ce qui explique sa courbe dans la figure \ref{fig:32}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\textwidth]{scilab_prof/q32.pdf}
+\caption{Graphe de $2 \rho_0 \frac{\partial\psi}{\partial I_1}$ en fonction de $I_1$ pour tous les essais. La courbe bleue répresente la fonction de Langevin avec les paramètres optimaux trouvés dans la question 3 : $C_L = 0.9573543$ et $N_L=26.947726$.}
+\label{fig:32}
+\end{figure}
+
+% partie 4
 \section{Développement d'une loi à deux invariants}
+Désormais on rajoute un deuxième terme à la loi de Langevin décrite ci-dessus : $\psi(\tens{e}) = \psi_1(I_1) + \psi_2(I_2)$, avec $\frac{\partial\psi}{\partial I_1} = C_L\frac{9N_L-I_1}{3N_L-I_1}$, où les constantes sont celles de la figure \ref{fig:32}. Il s'agit encore d'une simplification, car on néglige quand même les termes croisés $I_1I_2$ ou supérieurs.
 
+\subsection{Dépendence du modèle en deuxième invariant}
+On isole $2 \rho_0 \frac{\partial\psi}{\partial I_2}$ dans les équations de la question 2.6 en fonction de $t_1$ et $\lambda_1$. Le résultat est tracé dans les figures \ref{fig:411} à \ref{fig:413}.
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\textwidth]{scilab_prof/q411.pdf}
+\caption{Graphe de $2 \rho_0 \frac{\partial\psi}{\partial I_2}$ en fonction de $I_2$ pour l'essai de Traction simple. La courbe bleue répresente la regression non-linéaire des données par rapport à une fonction de la forme $A/(I_2-B)$ : $A = 8.3711453, B = -2.1941321$.}
+\label{fig:411}
 
+\includegraphics[width=0.7\textwidth]{scilab_prof/q412.pdf}
+\caption{Graphe de $2 \rho_0 \frac{\partial\psi}{\partial I_2}$ en fonction de $I_2$ pour l'essai de Traction plane. La courbe bleue répresente la regression non-linéaire des données par rapport à une fonction de la forme $A/(I_2-B)$ : $A = 3.4823868, B = -0.6123068$.}
+\label{fig:412}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{scilab_prof/q413.pdf}
+\caption{Graphe de $2 \rho_0 \frac{\partial\psi}{\partial I_2}$ en fonction de $I_2$ pour l'essai de Traction équibiaxiale. La courbe bleue répresente la regression non-linéaire des données par rapport à une fonction de la forme $A/(I_2-B)$ : $A = 3.7677584, B = -0.6907641$.}
+\label{fig:413}
+\end{figure}
 
-%partie 5
+\subsection{Expression du modèle en fonction du deuxième invariant}
+Puisqu'on observe une asymptote en $2 \rho_0 \frac{\partial\psi}{\partial I_2} \rightarrow 0$ et en $I_2 \rightarrow 0$, on choisit une fonction hiperbolique pour la méthode de régression non-linéaire. Ainsi, $2 \rho_0 \frac{\partial\psi}{\partial I_2} = \frac{A}{I_2-B}$ est une candidate. Ici, on négligera la regression trouvée dans l'essai de traction simple, parce que l'ensemble de points ne suit pas une fonction déterminée. On se retrouve donc avec une fonction hiperbolique qui prévoit bien l'essai de traction plane, mais qui prévoit moins bien l'essai de traction équibiaxiale pour valeurs de $\lambda_1$ importantes. Ainsi, pour la suite, on prendra comme valable la regression trouvée dans l'essai de TP, c'est-à-dire, $A = 3.4823868, B = -0.6123068$.
+
+\subsection{Prévision du modèle enrichi}
+Dans la figure \ref{fig:43}, on voit que le modèle prévoit correctement les essais TS et TP. Cependant, on reste toujours avec l'écart entre le modèle et les données réeles pour l'essai TEB à cause du fait que l'on n'a pas réussi à trouver une fonction décrivant aussi bien les phenomènes en TP et TEB. Il faut reconnaître que même avec cette simplification, on réussit à modéliser les phenomènes en petites déformations ($\lambda_1 < 2$).
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{scilab_prof/q421.pdf}
+\includegraphics[width=0.6\textwidth]{scilab_prof/q422.pdf}
+\includegraphics[width=0.6\textwidth]{scilab_prof/q423.pdf}
+\caption{Comparaison entre le modéle de Langevin enrichi et les données réeles pour l'essai TS, TP et TEB.}
+\label{fig:43}
+\end{figure}
+
 \section{Discussion}
 \subsection{Décomposition d'un transformation isochore}
 Pour un matériau incompressible, on a $det(\tens{F}) = 1$.
@@ -361,7 +450,7 @@ $
 }
 \end{equation}
 On a : $\tens{C} = \trans{\tens{F}} \tens{F} = \trans{\tens{U}} \tens{U}$ car $\tens{R}$ est une rotation.
-Par un calcul simple, on obtient : 
+Par un calcul simple, on obtient :
 \begin{align*}
 I_1 &= \lambda^2 + \lambda^{2 \alpha} + \lambda^{- 2 (\alpha +1)} \\
 I_2 &= \lambda^{-2} + \lambda^{2 (\alpha+1)} + \lambda^{ -2 \alpha} \\
@@ -375,13 +464,13 @@ I_2 &= \lambda^{-2} + \lambda^{2 (\alpha+1)} + \lambda^{ -2 \alpha} \\
 D'après cette figure, le domaine atteignable est l'ensemble des points entre la courbe rouge et la courbe bleu ciel.
 
 \subsection{Comparaison avec la question 2.6 :}
-On a donc : 
+On a donc :
 \begin{itemize}
-\item Traction simple : 
+\item Traction simple :
 D'après : %\ref{}, $\alpha = -0.5$
-\item Traction plane : 
+\item Traction plane :
 D'après : %ref{}, $\alpha = 0$
-\item Traction équibiaxiale : 
+\item Traction équibiaxiale :
 D'après : %ref{}, $\alpha = 1$
 \end{itemize}
 Par le tracé précédent, on a donc représenté tout les cas présentés dans la question 2.
