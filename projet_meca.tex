@@ -319,7 +319,7 @@ L'intérêt de tirer sur le ballon permet de changer le comportement décrit au 
 Il faut vérifier les conditions suivantes:
 
 \begin{itemize}
-	\item[$\bullet$] Materiau élastique isotrope (ce qui donne une dépendance entre $I_1$, $I_2$, $I_3$ et $T$ grâce à l'énergie libre, qui a une forme $\displaystyle\psi(\uline{X},T,I_1,I_2,I_3)$)
+	\item[$\bullet$] Materiau élastique isotrope (ce qui donne une dépendance entre $I_1$, $I_2$, $I_3$ et $T$ grâce à l'énergie libre : $\displaystyle\psi(\uline{X},T,I_1,I_2,I_3)$)
 	\item[$\bullet$] Matériau homogène (la loi ne dépend pas du point $\uline{X}$)
 	\item[$\bullet$] Isochorie ($I_3 =J^2=1$)
 	\item[$\bullet$] Temperature constante
@@ -330,13 +330,13 @@ Avec ces hypothèses l'énergie libre, qui caractérise la loi de comportement d
 Le matériau est incompressible donc $det(\uuline{F})=1$ or $\uuline{F}=\sum_{i} \lambda_i \uline{e_i}\otimes \uline{e_i}$ d'où $\lambda_1\lambda_2\lambda_3=1$ donc $$\fbox{$\lambda_3=\dfrac{1}{\lambda_2\lambda_1} $}$$
 
 \subsection{Calcul des invariants $I_1$ et $I_2$}
-$$\uline{C}=^t\uuline{F}.\uuline{F}=\sum_{i} \lambda_i ^2\uline{e_i}\otimes \uline{e_i}$$
+$$\uline{C}= \trans{\tens{F}}.\uuline{F}=\sum_{i} \lambda_i ^2\diage{i}$$
 $$I_1= tr(\uuline{C})=\lambda_1^2+\lambda_2^2+\lambda_3^2=\fbox{$\lambda_1^2+\lambda_2^2+\dfrac{1}{\lambda_2^2\lambda_1^2}=I_1$}$$
 $$I_2=\frac{1}{2}(I_1^2 - tr(\uuline{C}.\uuline{C})) =\frac{1}{2}(2\lambda_1^2\lambda_2^2+2\lambda_2^2\lambda_3^2+2\lambda_1^2\lambda_3^2) =\lambda_1^2\lambda_2^2+\lambda_2^2\lambda_3^2+\lambda_1^2\lambda_3^2 =\fbox{$\lambda_1^2\lambda_2^2+\dfrac{1}{\lambda_1^2}+\dfrac{1}{\lambda_2^2}=I_2$}$$
 
 \subsection{Calcul des tenseurs de contraintes de Piola $\uuline{S}$ et de Cauchy $\uuline{\sigma}$}
 \begin{itemize}
-	\item[$\bullet$ \textbf{Calcul de} $\uuline{S}$] $$ \uuline{S} = \rho_0 \frac{\partial \psi}{\partial \uuline{e}} + \eta\frac{\partial \varphi}{\partial \uuline{e}} $$
+	\item[\textbf{Calcul de} $\uuline{S}$] $$ \uuline{S} = \rho_0 \frac{\partial \psi}{\partial \uuline{e}} + \eta\frac{\partial \varphi}{\partial \uuline{e}} $$
 
 	On a $$\frac{\partial \psi}{\partial \uuline{e}}= \frac{\partial \psi}{\partial I_1}\frac{\partial I_1}{\partial \uuline{e}}+\frac{\partial \psi}{\partial I_2}\frac{\partial I_2}{\partial \uuline{e}}$$
  $$I_1=2\text{Tr}(\uuline{e})+3\Rightarrow \frac{\partial I_1}{\partial \uuline{e}}= 2\uuline{\mathds{1}} \quad \quad I_2=3+4\text{Tr}(\uuline{e})+2\left(\text{Tr}^2(\uuline{e})-\text{Tr}(\uuline{e}^2)\right)
@@ -345,7 +345,7 @@ $$I_2=\frac{1}{2}(I_1^2 - tr(\uuline{C}.\uuline{C})) =\frac{1}{2}(2\lambda_1^2\l
 Et $$\varphi=\text{det}\left(\uuline{C}\right)-1 \Rightarrow  \frac{\partial \varphi}{\partial \uuline{e}}= 2\uuline{C}^{-1}$$
 
 Donc \fbox{$\displaystyle \uuline{S} = 2\rho_0 \left[\frac{\partial \psi}{\partial I_1}\uuline{\mathds{1}}+ \frac{\partial \psi}{\partial I_2}\left(I_1\uuline{\mathds{1}}-\uuline{C}\right)\right] +2\eta\uuline{C}$}
-	\item[$\bullet$ \textbf{Calcul de} $\uuline{\sigma}$] D'apres la formule $\uuline{\sigma}=J^{-1}\uuline{F}.\uuline{S}.{}^t\uuline{F} $ on trouve :
+	\item[\textbf{Calcul de} $\uuline{\sigma}$] D'apres la formule $\uuline{\sigma}=J^{-1}\uuline{F}.\uuline{S}.{}^t\uuline{F} $ on trouve :
 	\\
 	\fbox{$\displaystyle \uuline{\sigma} = 2\rho_0 \left[\left(\frac{\partial \psi}{\partial I_1}+\frac{\partial \psi}{\partial I_2}\right)\uuline{B}-\frac{\partial \psi}{\partial I_2}\uuline{B}.\uuline{B}\right]+2\eta\uuline{\mathds{1}}  $}
 \end{itemize}
@@ -354,10 +354,10 @@ Donc \fbox{$\displaystyle \uuline{S} = 2\rho_0 \left[\frac{\partial \psi}{\parti
 
 On doit satisfaire les conditions suivantes:
 \begin{itemize}
-	\item[$\bullet$] $\dive{\uuline{\sigma}}=\uline{0} \Leftrightarrow \eta \text{ est une constante}$
-	\item[$\bullet$] Sur la face supérieure $S_1$ on a par hypothèse $\displaystyle \uline{R}_1=\displaystyle \int_{S_1}\uuline{\sigma}.\uline{e}_1$ ce qui donne $\uline{R}_1=\uuline{\sigma}.\uline{e}_1\lambda_2L_0\lambda_3e_0$ et donc $\dfrac{\left\|\uline{R}_1\right\|}{L_0e_0}=\dfrac{\left\|\uuline{\sigma}.\uline{e}_1\right\|}{\lambda_1}$
-	\item[$\bullet$] De la m\^eme mani\`ere sur la face latérale on trouve : $\dfrac{\left\|\uline{R}_2\right\|}{H_0e_0}=\dfrac{\left\|\uuline{\sigma}.\uline{e}_2\right\|}{\lambda_2}$
-	\item[$\bullet$] $\displaystyle\sigma.\uline{e}_3=\uline{0}\Leftrightarrow \eta=-\rho\left[\dfrac{1}{\lambda_1^2\lambda_2^2}\dfrac{\partial \psi}{\partial I_1}+\left(\dfrac{1}{\lambda_1^2}+\dfrac{1}{\lambda_2^2}\right)\dfrac{\partial \psi}{\partial I_2}\right] $
+	\item $\dive{\uuline{\sigma}}=\uline{0} \Leftrightarrow \eta \text{ est une constante}$
+	\item Sur la face supérieure $S_1$ on a par hypothèse $\displaystyle \uline{R}_1=\displaystyle \int_{S_1}\uuline{\sigma}.\uline{e}_1$ ce qui donne $\uline{R}_1=\uuline{\sigma}.\uline{e}_1\lambda_2L_0\lambda_3e_0$ et donc $\dfrac{\left\|\uline{R}_1\right\|}{L_0e_0}=\dfrac{\left\|\uuline{\sigma}.\uline{e}_1\right\|}{\lambda_1}$
+	\item De la m\^eme mani\`ere sur la face latérale on trouve : $\dfrac{\left\|\uline{R}_2\right\|}{H_0e_0}=\dfrac{\left\|\uuline{\sigma}.\uline{e}_2\right\|}{\lambda_2}$
+	\item $\displaystyle\sigma.\uline{e}_3=\uline{0}\Leftrightarrow \eta=-\rho\left[\dfrac{1}{\lambda_1^2\lambda_2^2}\dfrac{\partial \psi}{\partial I_1}+\left(\dfrac{1}{\lambda_1^2}+\dfrac{1}{\lambda_2^2}\right)\dfrac{\partial \psi}{\partial I_2}\right] $
 \end{itemize}
 
 En remplaçant la valeur de $\eta$ on trouve:
@@ -417,30 +417,30 @@ Dans cet exercice, on considère une loi de comportement uniquement caractéris�
 
 \subsection {Discussion sur les trois essais}
 
-Dans cette condition, les trois essais nous fournissent les moyens nécessaires pour identifier la forme de la fonction $\frac{\partial\psi}{\partial I_1} (I_1)$ par la mesure les quantités $t_1, t_2, \lambda_1$. L'essai "traction plane" nous permet de calculer $\frac{\partial\psi}{\partial I_1}$ de deux façons indépendantes, c'est-à-dire à partir de $t_1$ ou bien de $t_2$. Toutefois, si l'on ne dispose pas de l'information sur $t_2$, les trois essais sont théoriquement équivalents, étant donné que l'on peut mesurer les quantités $\lambda_1$ et $t_1$ avec une très bonne précision.
+Dans cette condition, les trois essais nous fournissent les moyens nécessaires pour identifier la forme de la fonction $\dfrac{\partial\psi}{\partial I_1} (I_1)$ par la mesure les quantités $t_1, t_2, \lambda_1$. L'essai "traction plane" nous permet de calculer $\dfrac{\partial\psi}{\partial I_1}$ de deux façons indépendantes, c'est-à-dire à partir de $t_1$ ou bien de $t_2$. Toutefois, si l'on ne dispose pas de l'information sur $t_2$, les trois essais sont théoriquement équivalents, étant donné que l'on peut mesurer les quantités $\lambda_1$ et $t_1$ avec une très bonne précision.
 
 \subsection {Traction Simple}
-Les équations utilisées pour calculer la quantité $\frac{\partial\psi}{\partial I_1} (I_1(\lambda_1))$ en fonction de $\lambda_1$ supposant $\psi = \psi(I_1)$ sont, d'après le dernier exercice :
+Les équations utilisées pour calculer la quantité $\dfrac{\partial\psi}{\partial I_1} (I_1(\lambda_1))$ en fonction de $\lambda_1$ supposant $\psi = \psi(I_1)$ sont, d'après le dernier exercice :
 \begin{enumerate}
 \item[(TS)]
 $
 \begin{cases}
 2 \rho_0 \frac{\partial\psi}{\partial I_1} = \frac{t_1\lambda_1^2}{\lambda^3-1}\\
-I_1 = \lambda_1^2 + \frac{2}{\lambda_1}
+I_1 = \lambda_1^2 + \dfrac{2}{\lambda_1}
 \end{cases}
 $
 \item[(TP)]
 $
 \begin{cases}
 2 \rho_0 \frac{\partial\psi}{\partial I_1} = \frac{t_1\lambda_1^3}{\lambda^4-1}\\
-I_1 = \lambda_1^2 + 1 + \frac{1}{\lambda_1^2}
+I_1 = \lambda_1^2 + 1 + \dfrac{1}{\lambda_1^2}
 \end{cases}
 $
 \item[(TEB)]
 $
 \begin{cases}
-2 \rho_0 \frac{\partial\psi}{\partial I_1} = \frac{t_1\lambda_1^5}{\lambda^6-1}\\
-I_1 = 2\lambda_1^2 + \frac{1}{\lambda_1^4}
+2 \rho_0 \dfrac{\partial\psi}{\partial I_1} = \dfrac{t_1\lambda_1^5}{\lambda^6-1}\\
+I_1 = 2\lambda_1^2 + \dfrac{1}{\lambda_1^4}
 \end{cases}
 $
 \end{enumerate}
@@ -448,18 +448,20 @@ $
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.7\textwidth]{scilab_prof/q31.pdf}
-\caption{Graphe de $2 \rho_0 \frac{\partial\psi}{\partial I_1}$ en fonction de $I_1$ pour l'essai de Traction simple. La courbe bleue répresente la fonction de Langevin avec les paramètres optimaux trouvés dans la question 3 : $C_L = 0.957$ et $N_L=26.9$.}
+\caption{Graphe de $2 \rho_0 \dfrac{\partial\psi}{\partial I_1}$ en fonction de $I_1$ pour l'essai de Traction simple. La courbe bleue répresente la fonction de Langevin avec les paramètres optimaux trouvés dans la question 3 : $C_L = 0.957$ et $N_L=26.9$.}
 \label{fig:31}
 \end{figure}
 
 La figure \ref{fig:31} contient le graphe paramétrique des relations (TS).
 
 \subsection{Lois NH et de Langevin}
-La figure \ref{fig:31} nous indique que les fonctions $\psi$ ont une forte dépendence par rapport premier invariant, surtout quand il dépasse la valeur de $I_1 = 40$. SCILAB nous fournit les outils de régression linéaire et non-linéaire nécessaires pour trouver les paramètres optimaux $C_{NH}$, $C_L$ et $N_L$ dans la régression $2 \rho_0 \frac{\partial\psi}{\partial I_1} = C_{NH}$ (NH) ou $2 \rho_0 \frac{\partial\psi}{\partial I_1} = C_L \frac{9N_L-I_1}{3N_L-I_1}$ (Langevin) (code ci-joint). Les résultats trouvés sont $C_{NH} = 4.73$ et $(C_L, N_L) = (0.957, 26.9)$. Évidemment, pour les grandes valeurs de $I_1$, on a intérêt à utiliser la loi de Langevin, plus appropriée qu'une constante néo-hookéenne dans le domaine d'application de grandes déformations. Pour petites valeurs de $I_1$, la constante optimale devient $C_{NH} \approx 3.5$.
+La figure \ref{fig:31} nous indique que les fonctions $\psi$ ont une forte dépendence par rapport premier invariant, surtout quand il dépasse la valeur $I_1 = 40$. SCILAB nous fournit les outils de régression linéaire et non-linéaire nécessaires pour trouver les paramètres optimaux $C_{NH}$, $C_L$ et $N_L$ dans la régression $2 \rho_0 \dfrac{\partial\psi}{\partial I_1} = C_{NH}$ (NH) où $2 \rho_0 \dfrac{\partial\psi}{\partial I_1} = C_L \frac{9N_L-I_1}{3N_L-I_1}$ (Langevin) (code ci-joint).
+
+Les résultats trouvés sont $C_{NH} = 4.73$ et $(C_L, N_L) = (0.957, 26.9)$. Évidemment, pour les grandes valeurs de $I_1$, on a intérêt à utiliser la loi de Langevin, plus appropriée qu'une constante néo-hookéenne dans le domaine des grandes déformations. Pour petites valeurs de $I_1$, la constante optimale devient $C_{NH} \approx 3.5$.
 
 \subsection{TP et TEB - simple dépendence en premier invariant}
 
-On voit dans la figure \ref{fig:32} que la loi de Langevin décrit bien les essais TS et TP. Cependant, l'essai TEB s'écarte des deux autres courbes. On observe que, dans les équations décrivant $t_1$ dans la question 2.6, pour les grandes valeurs de $\lambda_1$, on néglige de plus en plus la dépendence de $\psi$ par rapport à $I_2$ dans l'essai TS. Dans l'essai TP, la valeur de $\frac{\partial\psi}{\partial I_2}$ est déjà pris en compte dans le calcul de $\frac{\partial\psi}{\partial I_1}$. En plus, dans cet essai $I_1 = I_2$. Par contre, dans l'essai TEB, l'écart entre $\frac{\partial\psi}{\partial I_2}$ et $\frac{\partial\psi}{\partial I_1}$ croît avec $\lambda_1^2$, ce qui explique sa courbe dans la figure \ref{fig:32}.
+On voit dans la figure \ref{fig:32} que la loi de Langevin décrit bien les essais TS et TP. Cependant, l'essai TEB s'écarte des deux autres courbes. On observe que, dans les équations décrivant $t_1$ dans la question 2.6, pour les grandes valeurs de $\lambda_1$, on néglige de plus en plus la dépendence de $\psi$ par rapport à $I_2$ dans l'essai TS. Dans l'essai TP, la valeur de $\dfrac{\partial\psi}{\partial I_2}$ est déjà prise en compte dans le calcul de $\dfrac{\partial\psi}{\partial I_1}$. En plus, dans cet essai $I_1 = I_2$. Par contre, dans l'essai TEB, l'écart entre $\dfrac{\partial\psi}{\partial I_2}$ et $\dfrac{\partial\psi}{\partial I_1}$ croît avec $\lambda_1^2$, ce qui explique sa courbe de la figure \ref{fig:32}.
 
 \begin{figure}[!ht]
 \centering
@@ -478,7 +480,7 @@ On isole $2 \rho_0 \frac{\partial\psi}{\partial I_2}$ dans les équations de la 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.5\textwidth]{scilab_prof/q411.pdf}
-\caption{Graphe de $2 \rho_0 \frac{\partial\psi}{\partial I_2}$ en fonction de $I_2$ pour l'essai de Traction simple. La courbe bleue représente la régression non-linéaire des données par rapport à une fonction de la forme $A/(I_2-B)$ : $A = 8.37, B = -2.19$.}
+\caption{Graphe de $2 \rho_0 \dfrac{\partial\psi}{\partial I_2}$ en fonction de $I_2$ pour l'essai de Traction simple. La courbe bleue représente la régression non-linéaire des données par rapport à une fonction de la forme $A/(I_2-B)$ : $A = 8.37, B = -2.19$.}
 \label{fig:411}
 \end{figure}
 %\begin{figure}[!ht]
@@ -494,28 +496,28 @@ On isole $2 \rho_0 \frac{\partial\psi}{\partial I_2}$ dans les équations de la 
 %\label{fig:413}
 %\end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \begin{minipage}{0.49\linewidth}
 	\centering\includegraphics[scale=0.45]{scilab_prof/q412.pdf}
-	\caption{Graphe de $2 \rho_0 \frac{\partial\psi}{\partial I_2}$ en fonction de $I_2$ pour l'essai de Traction plane. La courbe bleue represente la régression non-linéaire des données par rapport à une fonction de la forme $A/(I_2-B)$ : $A = 3.48, B = -0.612$.}
+	\caption{Graphe de $2 \rho_0 \dfrac{\partial\psi}{\partial I_2}$ en fonction de $I_2$ pour l'essai de Traction plane. La courbe bleue represente la régression non-linéaire des données par rapport à une fonction de la forme $A/(I_2-B)$ : $A = 3.48, B = -0.612$.}
 \label{fig:412}
 \end{minipage}
 	\hfill
 \begin{minipage}{0.49\linewidth}
 	\centering\includegraphics[scale=0.45]{scilab_prof/q413.pdf}
-	\caption{Graphe de $2 \rho_0 \frac{\partial\psi}{\partial I_2}$ en fonction de $I_2$ pour l'essai de Traction équibiaxiale. La courbe bleue représente la régression non-linéaire des données par rapport à une fonction de la forme $A/(I_2-B)$ : $A = 3.77, B = -0.691$.}
+	\caption{Graphe de $2 \rho_0 \dfrac{\partial\psi}{\partial I_2}$ en fonction de $I_2$ pour l'essai de Traction équibiaxiale. La courbe bleue représente la régression non-linéaire des données par rapport à une fonction de la forme $A/(I_2-B)$ : $A = 3.77, B = -0.691$.}
 \label{fig:413}
 \end{minipage}
 \end{figure}
 
 \FloatBarrier
 \subsection{Expression du modèle en fonction du deuxième invariant}
-Puisqu'on observe une asymptote en $2 \rho_0 \frac{\partial\psi}{\partial I_2} \rightarrow 0$ et en $I_2 \rightarrow 0$, on choisit une fonction hyperbolique pour la méthode de régression non-linéaire. Ainsi, $2 \rho_0 \frac{\partial\psi}{\partial I_2} = \frac{A}{I_2-B}$ est une fonction candidate. Ici, on négligera la régression trouvée dans l'essai de traction simple, parce que l'ensemble de points ne suit pas une fonction déterminée. On a donc avec une fonction hyperbolique qui prévoit bien l'essai de traction plane, mais dont le comportement est moins adéquat lors de l'essai de traction équibiaxiale pour valeurs de $\lambda_1$ importantes. Ainsi, pour la suite, on prendra comme référence la régression trouvée dans l'essai de TP, c'est-à-dire, $A = 3.48, B = -0.612$.
+Puisqu'on observe une asymptote en $2 \rho_0 \dfrac{\partial\psi}{\partial I_2} \rightarrow 0$ et en $I_2 \rightarrow 0$, on choisit une fonction hyperbolique pour la méthode de régression non-linéaire. Ainsi, $2 \rho_0 \dfrac{\partial\psi}{\partial I_2} = \dfrac{A}{I_2-B}$ est une fonction candidate. Ici, on négligera la régression trouvée dans l'essai de traction simple, parce que l'ensemble des points ne suit pas une fonction déterminée. On a donc avec une fonction hyperbolique qui prévoit bien l'essai de traction plane, mais dont le comportement est moins adéquat lors de l'essai de traction équibiaxiale pour valeurs de $\lambda_1$ importantes. Ainsi, pour la suite, on prendra comme référence la régression trouvée dans l'essai de TP, c'est-à-dire, $\textbf{A = 3.48, B = -0.612}$.
 
 \subsection{Prévision du modèle enrichi}
 Dans la figure \ref{fig:43}, on voit que le modèle prévoit correctement les essais TS et TP. Cependant, on reste toujours avec l'écart entre le modèle et les données réelles pour l'essai TEB à cause du fait que l'on n'a pas réussi à trouver une fonction décrivant aussi bien les phénomènes en TP et TEB.
 
-Il faut reconnaître que même avec cette simplification, on réussit à modéliser les phénomènes en petites déformations ($\lambda_1 < 2$).
+On remarque que même avec cette simplification, on réussit à modéliser les phénomènes en petites déformations ($\lambda_1 < 2$).
 
 %\begin{figure}[!ht]
 %\centering
@@ -526,7 +528,7 @@ Il faut reconnaître que même avec cette simplification, on réussit à modéli
 %
 %\end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \begin{minipage}{0.49\linewidth}
 	\centering\includegraphics[scale=0.45]{scilab_prof/q421.pdf}
 \end{minipage}
@@ -554,8 +556,8 @@ det(\tens{F}) &= \overbrace{det(\tens{R})}^{=1} \cdot det(\tens{U}) \\
 \end{align*}
 Soit : $\lambda_3 = \FRAC{1}{\lambda_2 \lambda_1}$ or localement, les $\lambda_i$ sont des constantes donc, par bijections de la fonctions $x \mapsto x^\alpha$, on peut exprimer $\lambda_2$ en fonction de $\lambda_1 = \lambda$ soit : $\lambda_2 = \lambda^\alpha$.
 
-On a donc : $\tens{U} = \lambda \uline{e'_1} \otimes \uline{e'_1} + \lambda^\alpha \uline{e'_2} \otimes \uline{e'_2} + \FRAC{1}{\lambda \lambda^\alpha} \uline{e'_3} \otimes \uline{e'_3}$
-De plus : pourquoi lambda>1
+On a donc : $\tens{U} = \lambda \uline{e'_1} \otimes \uline{e'_1} + \lambda^\alpha \uline{e'_2} \otimes \uline{e'_2} + \FRAC{1}{\lambda \lambda^\alpha} \uline{e'_3} \otimes \uline{e'_3}$\\
+De plus : Quitte à échanger, on peu supposer $\lambda >1$ et $\alpha \in [-1/2, 1]$\\
 $\tens{R}$ étant la rotation qui transforme la base $e'$ en $e''$, on a bien :
 \begin{equation}
 \fbox{
@@ -594,10 +596,10 @@ On couvre donc l'ensemble des valeurs possibles. Cependant, il manque une ou deu
 
 \subsection{Résolution pour les trois lois trouvées}
 En résolvant le système avec les paramètres optimisés et la loi optimisée trouvées à la partie 3 et 4 on obtient les solutions suivantes:
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering\includegraphics[scale=0.72]{scilab/q531.eps}
 \end{figure}
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering\includegraphics[scale=0.72]{scilab/q532.eps}
 \end{figure}
 \FloatBarrier
@@ -620,15 +622,15 @@ Points remarquables de la courbe $\Delta p(\lambda)$ :
 	\item $\lambda = 4.7$ minimum local, $\Delta p = 0.042$, en rouge
 	\end{enumerate}
 \end{itemize}
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering\includegraphics[scale=1.2]{scilab/q533.png}
 \end{figure}
 \FloatBarrier
-
+Au fur et à mesure du gonflage, $I_1$ et $I_2$ progressent.
 
 
 \subsection{Cas $T_a$ non-nul}
-On observe un décalage des points vers la droite et vers le haut : $\lambda$ et $\Delta p$ plus grands.
+On observe un décalage des points vers la droite et vers le haut : $\lambda$ et $\Delta p$ plus grands. On à le même comportement pour $(I_1, I_2)$.
 
 \subsection{Conclusion}
 Par l'utilisation des paramètres identifiés :
